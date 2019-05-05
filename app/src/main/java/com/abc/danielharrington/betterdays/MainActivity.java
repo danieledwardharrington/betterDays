@@ -15,6 +15,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import java.util.Calendar;
+import java.util.Random;
 import android.view.View;
 
 import static com.abc.danielharrington.betterdays.BetterDays.CHANNEL_1_ID;
@@ -75,6 +77,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
+
+
     @Override
     public void onBackPressed(){
         if(drawer.isDrawerOpen(GravityCompat.START)){
@@ -105,5 +109,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }//sendOnChannel2 method
 
+    private void startAlarm(){
+        Random rand = new Random();
+        int hour = rand.nextInt(24) + 1;
+        int minute = rand.nextInt(60);
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, hour);
+        calendar.set(Calendar.MINUTE, minute);
+        calendar.set(Calendar.SECOND, 0);
+
+    }//startAlarm method
 
 }//MainActivity class
