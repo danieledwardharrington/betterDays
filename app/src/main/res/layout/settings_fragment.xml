@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/signBlue"
+    android:id="@+id/settings_layout"
+
+    >
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/midnightBlue"
+        android:id="@+id/toolbar"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:elevation="4dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Settings"
+            android:textStyle="bold|italic"
+            android:textColor="@color/titleTextColor"
+            android:textSize="20sp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginBottom="15dp"
+            android:id="@+id/settings_title_textview"
+            />
+
+
+    </android.support.v7.widget.Toolbar>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/notifications_onoff_textview"
+        android:layout_marginTop="60dp"
+        android:text="Notifications"
+        android:textSize="20sp"
+        android:textColor="@color/titleTextColor"
+        android:layout_marginLeft="10dp"
+        />
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="30dp"
+        android:id="@+id/notification_switch"
+        android:checked="true"
+        android:theme="@style/SwitchStyle"
+
+        />
+
+    <Spinner
+        android:id="@+id/per_day_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/notifications_onoff_textview"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="30dp"
+        android:background="@color/titleTextColor"
+
+        />
+
+
+
+
+
+</RelativeLayout>

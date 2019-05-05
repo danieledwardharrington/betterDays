@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/midnightBlue"
+        android:id="@+id/toolbar"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:elevation="4dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quotes"
+            android:textStyle="bold|italic"
+            android:textColor="@color/titleTextColor"
+            android:textSize="20sp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginBottom="15dp"
+            android:id="@+id/quotes_title_textview"
+            />
+
+
+    </android.support.v7.widget.Toolbar>
+
+
+
+</RelativeLayout>
