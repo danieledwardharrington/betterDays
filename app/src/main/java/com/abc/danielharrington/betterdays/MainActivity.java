@@ -1,7 +1,13 @@
 package com.abc.danielharrington.betterdays;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -9,15 +15,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+
+import static com.abc.danielharrington.betterdays.BetterDays.CHANNEL_1_ID;
+import static com.abc.danielharrington.betterdays.BetterDays.CHANNEL_2_ID;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawer;
-
+    private NotificationManagerCompat notificationManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        notificationManager = NotificationManagerCompat.from(this);
+
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -33,9 +46,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navView.setNavigationItemSelectedListener(this);
 
         if(savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new QuotesFragment()).commit();
-            navView.setCheckedItem(R.id.nav_quotes);
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new QuotesFragment()).commit();
+        navView.setCheckedItem(R.id.nav_quotes);
         }//if
+
+
     }//onCreate method
 
     @Override
@@ -69,4 +84,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             super.onBackPressed();
         }
     }//onBackPressed
+
+    public void sendOnChannel1(View view){
+        String title = "New Quote!";
+        String message = "Motivation available :)";
+
+        Notification notification = new NotificationCompat.Builder(this, CHANNEL_1_ID).setSmallIcon(R.drawable.ic_quotes).setContentTitle(title).setContentText(message).setCategory(NotificationCompat.CATEGORY_MESSAGE).build();
+
+        notificationManager.notify(1, notification);
+
+    }//sendOnChannel1 method
+
+    public void sendOnChannel2(View view){
+        String title = "New Quote!";
+        String message = "Motivation available :)";
+
+        Notification notification = new NotificationCompat.Builder(this, CHANNEL_2_ID).setSmallIcon(R.drawable.ic_quotes).setContentTitle(title).setContentText(message).setCategory(NotificationCompat.CATEGORY_MESSAGE).build();
+
+        notificationManager.notify(2, notification);
+
+    }//sendOnChannel2 method
+
+
 }//MainActivity class

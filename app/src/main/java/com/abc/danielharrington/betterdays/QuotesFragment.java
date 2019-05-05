@@ -17,9 +17,9 @@ public class QuotesFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.about_fragment, container, false);
+        View view = inflater.inflate(R.layout.quotes_fragment, container, false);
 
-
+        getActivity().setTitle("Quotes");
 
         return view;
     }//onCreateView method

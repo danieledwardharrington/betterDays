@@ -18,13 +18,13 @@ public class SettingsFragment extends Fragment implements AdapterView.OnItemSele
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.settings_fragment, container, false);
+        getActivity().setTitle("Settings");
 
-        Spinner perDaySpinner = view.findViewById(R.id.per_day_spinner);
+        Spinner spinner = view.findViewById(R.id.per_day_spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.quotes_per_day_numbers, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        perDaySpinner.setAdapter(adapter);
-        perDaySpinner.setPrompt("Quotes Per Day");
-        perDaySpinner.setOnItemSelectedListener(this);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
 
         return view;
     }//onCreateView method
@@ -33,6 +33,7 @@ public class SettingsFragment extends Fragment implements AdapterView.OnItemSele
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String selection = parent.getItemAtPosition(position).toString(); //for quotes per day
+        int perDay = Integer.parseInt(selection);
     }//onItemSelected
 
     @Override

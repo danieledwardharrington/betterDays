@@ -5,20 +5,25 @@
     <string name="per_day_string">Notifications Per Day</string>
 
     <string-array name="quotes_per_day_numbers">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
+        <item>One</item>
+        <item>Two</item>
+        <item>Three</item>
+        <item>Four</item>
+        <item>Five</item>
+        <item>Six</item>
     </string-array>
 
     <string name="about_string">
-        Thank you for downloading my app. I am new to \n
-        software development but it\'s my goal to use to\n
-        help those, like me, who suffer from mental illness\n
-        every day. Sometimes a little bit can go a long way\n
-        and I hope this little bit will bring comfort.\n\n
+        Thank you for downloading my app. My intention\n
+        is for this to be a companion to other forms of\n
+        therapy. Like many people across the world, I\'ve\n
+        struggled with varying degrees of depression and\n
+        anxiety and often feel myself getting to my lowest\n
+        points in the middle of long shifts at work or doing\n
+        daily tasks. I decided to make this to provide\n
+        motivational support here and there. Every little bit\n
+        helps and I hope for others out there like me, this\n
+        little bit can provide some measure of comfort.\n\n
         -Daniel
 
     </string>

@@ -16,6 +16,7 @@ public class AboutFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.about_fragment, container, false);
 
+        getActivity().setTitle("About");
 
         return view;
     }//onCreateView method
