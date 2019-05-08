@@ -1,7 +1,9 @@
 package com.abc.danielharrington.betterdays;
 
+import android.app.TimePickerDialog;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.view.View;
 import android.view.LayoutInflater;
@@ -14,6 +16,8 @@ import android.widget.CompoundButton;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.TimePicker;
+
 
 public class SettingsFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
@@ -35,6 +39,7 @@ public class SettingsFragment extends Fragment implements AdapterView.OnItemSele
     private Switch notificationSwitch;
     private TextView notificationsTV;
     private TextView perDayTV;
+    String TIME_SET;
 
     Spinner spinner;
 
@@ -126,6 +131,16 @@ public class SettingsFragment extends Fragment implements AdapterView.OnItemSele
                 time1tv.setVisibility(View.VISIBLE);
                 time1button.setVisibility(View.VISIBLE);
                 time1button.setText(button1);
+                time1button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        DialogFragment timePicker = new TimePickerFragment();
+                        timePicker.show(getFragmentManager(), "time picker");
+                        changeText(time1tv);
+                    }//onClick
+                });
+
+
 
                 time2tv.setText("");
                 time2button.setText("");
@@ -154,11 +169,27 @@ public class SettingsFragment extends Fragment implements AdapterView.OnItemSele
                 time1tv.setVisibility(View.VISIBLE);
                 time1button.setVisibility(View.VISIBLE);
                 time1button.setText(button1);
+                time1button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        DialogFragment timePicker = new TimePickerFragment();
+                        timePicker.show(getFragmentManager(), "time picker");
+
+                    }//onClick
+                });
 
                 time2tv.setText(second);
                 time2tv.setVisibility(View.VISIBLE);
                 time2button.setText(button2);
                 time2button.setVisibility(View.VISIBLE);
+                time2button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        DialogFragment timePicker = new TimePickerFragment();
+                        timePicker.show(getFragmentManager(), "time picker");
+
+                    }//onClick
+                });
 
 
                 time3tv.setText("");
@@ -183,17 +214,41 @@ public class SettingsFragment extends Fragment implements AdapterView.OnItemSele
                 time1tv.setVisibility(View.VISIBLE);
                 time1button.setVisibility(View.VISIBLE);
                 time1button.setText(button1);
+                time1button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        DialogFragment timePicker = new TimePickerFragment();
+                        timePicker.show(getFragmentManager(), "time picker");
+
+                    }//onClick
+                });
 
                 time2tv.setText(second);
                 time2tv.setVisibility(View.VISIBLE);
                 time2button.setText(button2);
                 time2button.setVisibility(View.VISIBLE);
+                time2button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        DialogFragment timePicker = new TimePickerFragment();
+                        timePicker.show(getFragmentManager(), "time picker");
+
+                    }//onClick
+                });
 
 
                 time3tv.setText(third);
                 time3tv.setVisibility(View.VISIBLE);
                 time3button.setText(button3);
                 time3button.setVisibility(View.VISIBLE);
+                time3button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        DialogFragment timePicker = new TimePickerFragment();
+                        timePicker.show(getFragmentManager(), "time picker");
+
+                    }//onClick
+                });
 
                 time4tv.setText("");
                 time4button.setText("");
@@ -212,22 +267,54 @@ public class SettingsFragment extends Fragment implements AdapterView.OnItemSele
                 time1tv.setVisibility(View.VISIBLE);
                 time1button.setVisibility(View.VISIBLE);
                 time1button.setText(button1);
+                time1button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        DialogFragment timePicker = new TimePickerFragment();
+                        timePicker.show(getFragmentManager(), "time picker");
+
+                    }//onClick
+                });
 
                 time2tv.setText(second);
                 time2tv.setVisibility(View.VISIBLE);
                 time2button.setText(button2);
                 time2button.setVisibility(View.VISIBLE);
+                time2button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        DialogFragment timePicker = new TimePickerFragment();
+                        timePicker.show(getFragmentManager(), "time picker");
+
+                    }//onClick
+                });
 
 
                 time3tv.setText(third);
                 time3tv.setVisibility(View.VISIBLE);
                 time3button.setText(button3);
                 time3button.setVisibility(View.VISIBLE);
+                time3button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        DialogFragment timePicker = new TimePickerFragment();
+                        timePicker.show(getFragmentManager(), "time picker");
+
+                    }//onClick
+                });
 
                 time4tv.setText(fourth);
                 time4tv.setVisibility(View.VISIBLE);
                 time4button.setText(button4);
                 time4button.setVisibility(View.VISIBLE);
+                time4button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        DialogFragment timePicker = new TimePickerFragment();
+                        timePicker.show(getFragmentManager(), "time picker");
+
+                    }//onClick
+                });
 
                 time5tv.setText("");
                 time5button.setText("");
@@ -242,27 +329,67 @@ public class SettingsFragment extends Fragment implements AdapterView.OnItemSele
                 time1tv.setVisibility(View.VISIBLE);
                 time1button.setVisibility(View.VISIBLE);
                 time1button.setText(button1);
+                time1button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        DialogFragment timePicker = new TimePickerFragment();
+                        timePicker.show(getFragmentManager(), "time picker");
+
+                    }//onClick
+                });
 
                 time2tv.setText(second);
                 time2tv.setVisibility(View.VISIBLE);
                 time2button.setText(button2);
                 time2button.setVisibility(View.VISIBLE);
+                time2button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        DialogFragment timePicker = new TimePickerFragment();
+                        timePicker.show(getFragmentManager(), "time picker");
+
+                    }//onClick
+                });
 
 
                 time3tv.setText(third);
                 time3tv.setVisibility(View.VISIBLE);
                 time3button.setText(button3);
                 time3button.setVisibility(View.VISIBLE);
+                time3button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        DialogFragment timePicker = new TimePickerFragment();
+                        timePicker.show(getFragmentManager(), "time picker");
+
+                    }//onClick
+                });
 
                 time4tv.setText(fourth);
                 time4tv.setVisibility(View.VISIBLE);
                 time4button.setText(button4);
                 time4button.setVisibility(View.VISIBLE);
+                time4button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        DialogFragment timePicker = new TimePickerFragment();
+                        timePicker.show(getFragmentManager(), "time picker");
+
+                    }//onClick
+                });
 
                 time5tv.setText(fifth);
                 time5tv.setVisibility(View.VISIBLE);
                 time5button.setText(button5);
                 time5button.setVisibility(View.VISIBLE);
+                time5button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        DialogFragment timePicker = new TimePickerFragment();
+                        timePicker.show(getFragmentManager(), "time picker");
+
+                    }//onClick
+                });
 
                 time6tv.setText("");
                 time6button.setText("");
@@ -273,40 +400,97 @@ public class SettingsFragment extends Fragment implements AdapterView.OnItemSele
                 time1tv.setVisibility(View.VISIBLE);
                 time1button.setVisibility(View.VISIBLE);
                 time1button.setText(button1);
+                time1button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        DialogFragment timePicker = new TimePickerFragment();
+                        timePicker.show(getFragmentManager(), "time picker");
+
+                    }//onClick
+                });
 
                 time2tv.setText(second);
                 time2tv.setVisibility(View.VISIBLE);
                 time2button.setText(button2);
                 time2button.setVisibility(View.VISIBLE);
+                time2button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        DialogFragment timePicker = new TimePickerFragment();
+                        timePicker.show(getFragmentManager(), "time picker");
+
+                    }//onClick
+                });
 
 
                 time3tv.setText(third);
                 time3tv.setVisibility(View.VISIBLE);
                 time3button.setText(button3);
                 time3button.setVisibility(View.VISIBLE);
+                time3button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        DialogFragment timePicker = new TimePickerFragment();
+                        timePicker.show(getFragmentManager(), "time picker");
+
+                    }//onClick
+                });
 
                 time4tv.setText(fourth);
                 time4tv.setVisibility(View.VISIBLE);
                 time4button.setText(button4);
                 time4button.setVisibility(View.VISIBLE);
+                time4button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        DialogFragment timePicker = new TimePickerFragment();
+                        timePicker.show(getFragmentManager(), "time picker");
+
+                    }//onClick
+                });
 
                 time5tv.setText(fifth);
                 time5tv.setVisibility(View.VISIBLE);
                 time5button.setText(button5);
                 time5button.setVisibility(View.VISIBLE);
+                time5button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        DialogFragment timePicker = new TimePickerFragment();
+                        timePicker.show(getFragmentManager(), "time picker");
+
+                    }//onClick
+                });
 
                 time6tv.setText(sixth);
                 time6tv.setVisibility(View.VISIBLE);
                 time6button.setText(button6);
                 time6button.setVisibility(View.VISIBLE);
+                time6button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        DialogFragment timePicker = new TimePickerFragment();
+                        timePicker.show(getFragmentManager(), "time picker");
+
+                    }//onClick
+                });
                 break;
         }//switch
 
 
-    }//onItemSelected
+    }//onItemSelected method
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
-    }//onNothingSelected
+    }//onNothingSelected method
+
+
+    public void changeText(TextView view){
+        view.setText(TIME_SET);
+    }//changeText method
+
+    public void setTime(String time){
+        TIME_SET = time;
+    }
 }//SettingsFragment class

@@ -3,6 +3,7 @@ package com.abc.danielharrington.betterdays;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.TimePickerDialog;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -15,21 +16,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import java.util.Calendar;
-import java.util.Random;
 import android.view.View;
+import android.widget.TimePicker;
 
 import static com.abc.danielharrington.betterdays.BetterDays.CHANNEL_1_ID;
 import static com.abc.danielharrington.betterdays.BetterDays.CHANNEL_2_ID;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, TimePickerFragment.TimePickedListener {
 
     private DrawerLayout drawer;
     private NotificationManagerCompat notificationManager;
+    private QuotesFragment quotesFragment;
+    private AboutFragment aboutFragment;
+    private SettingsFragment settingsFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        quotesFragment = new QuotesFragment();
+        aboutFragment = new AboutFragment();
+        settingsFragment = new SettingsFragment();
 
         notificationManager = NotificationManagerCompat.from(this);
 
@@ -59,13 +65,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.nav_quotes:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new QuotesFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, quotesFragment).commit();
                 break;
             case R.id.nav_about:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AboutFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, aboutFragment).commit();
                 break;
             case R.id.nav_settings:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SettingsFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, settingsFragment).commit();
                 break;
             case R.id.nav_share:
 
@@ -110,15 +116,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }//sendOnChannel2 method
 
     private void startAlarm(){
-        Random rand = new Random();
-        int hour = rand.nextInt(24) + 1;
-        int minute = rand.nextInt(60);
 
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY, hour);
-        calendar.set(Calendar.MINUTE, minute);
-        calendar.set(Calendar.SECOND, 0);
 
     }//startAlarm method
 
+    @Override
+    public void onTimePicked(String time) {
+        settingsFragment.setTime(time);
+    }//onTimePicked method
 }//MainActivity class
