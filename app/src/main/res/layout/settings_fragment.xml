@@ -58,146 +58,25 @@
 
     </Spinner>
 
-    <TextView
-        android:id="@+id/time_1_textview"
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/per_day_textview"
-        android:layout_marginLeft="10dp"
-        android:layout_alignBaseline="@id/time_1_button"
-        android:textSize="20sp"
-        android:textColor="@color/titleTextColor"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/per_day_textview"
+        android:layout_marginTop="50dp"
+        android:text="save"
+        android:id="@+id/save_button"
         />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="invisible"
-        android:layout_below="@id/per_day_spinner"
-        android:textColor="@color/black"
-        android:textSize="12sp"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="30dp"
+        android:layout_below="@id/save_button"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
-        android:id="@+id/time_1_button"/>
-
-
-    <TextView
-        android:id="@+id/time_2_textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/time_1_textview"
-        android:layout_alignBaseline="@+id/time_2_button"
-        android:layout_marginLeft="10dp"
-        android:textSize="20sp"
-        android:textColor="@color/titleTextColor"
+        android:text="CLEAR"
+        android:id="@+id/clear_button"
         />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="invisible"
-        android:layout_below="@id/time_1_button"
-        android:textColor="@color/black"
-        android:textSize="12sp"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="10dp"
-        android:id="@+id/time_2_button"/>
-
-    <TextView
-        android:id="@+id/time_3_textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/time_2_textview"
-        android:layout_marginLeft="10dp"
-        android:layout_alignBaseline="@+id/time_3_button"
-        android:textSize="20sp"
-        android:textColor="@color/titleTextColor"
-        />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="invisible"
-        android:layout_below="@id/time_2_button"
-        android:textColor="@color/black"
-        android:textSize="12sp"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="10dp"
-        android:id="@+id/time_3_button"/>
-
-    <TextView
-        android:id="@+id/time_4_textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/time_3_textview"
-        android:layout_alignBaseline="@+id/time_4_button"
-        android:layout_marginLeft="10dp"
-        android:textSize="20sp"
-        android:textColor="@color/titleTextColor"
-        />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="invisible"
-        android:layout_below="@id/time_3_button"
-        android:textColor="@color/black"
-        android:textSize="12sp"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="10dp"
-        android:id="@+id/time_4_button"/>
-
-    <TextView
-        android:id="@+id/time_5_textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/time_4_textview"
-        android:layout_alignBaseline="@+id/time_5_button"
-        android:layout_marginLeft="10dp"
-        android:textSize="20sp"
-        android:textColor="@color/titleTextColor"
-        />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="invisible"
-        android:layout_below="@id/time_4_button"
-        android:textColor="@color/black"
-        android:textSize="12sp"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="10dp"
-        android:id="@+id/time_5_button"/>
-
-    <TextView
-        android:id="@+id/time_6_textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/time_5_textview"
-        android:layout_alignBaseline="@+id/time_6_button"
-        android:layout_marginLeft="10dp"
-        android:textSize="20sp"
-        android:textColor="@color/titleTextColor"
-        />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="invisible"
-        android:layout_below="@id/time_5_button"
-        android:textColor="@color/black"
-        android:textSize="12sp"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="10dp"
-        android:id="@+id/time_6_button"/>
-
-
 
 
 

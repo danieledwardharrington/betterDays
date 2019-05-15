@@ -22,7 +22,7 @@ import android.widget.TimePicker;
 import static com.abc.danielharrington.betterdays.BetterDays.CHANNEL_1_ID;
 import static com.abc.danielharrington.betterdays.BetterDays.CHANNEL_2_ID;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, TimePickerFragment.TimePickedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawer;
     private NotificationManagerCompat notificationManager;
@@ -96,32 +96,35 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }//onBackPressed
 
     public void sendOnChannel1(View view){
-        String title = "New Quote!";
-        String message = "Motivation available :)";
+        String title = "Better Days";
+        String message = "New Quote Available";
 
-        Notification notification = new NotificationCompat.Builder(this, CHANNEL_1_ID).setSmallIcon(R.drawable.ic_quotes).setContentTitle(title).setContentText(message).setCategory(NotificationCompat.CATEGORY_MESSAGE).build();
+        Notification notification = new NotificationCompat.Builder(this, CHANNEL_1_ID)
+                .setSmallIcon(R.drawable.ic_quotes)
+                .setContentTitle(title).setContentText(message)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                .build();
 
         notificationManager.notify(1, notification);
 
     }//sendOnChannel1 method
 
     public void sendOnChannel2(View view){
-        String title = "New Quote!";
-        String message = "Motivation available :)";
+        String title = "Better Days";
+        String message = "New Quote Available";
 
-        Notification notification = new NotificationCompat.Builder(this, CHANNEL_2_ID).setSmallIcon(R.drawable.ic_quotes).setContentTitle(title).setContentText(message).setCategory(NotificationCompat.CATEGORY_MESSAGE).build();
+        Notification notification = new NotificationCompat.Builder(this, CHANNEL_2_ID)
+                .setSmallIcon(R.drawable.ic_quotes)
+                .setContentTitle(title)
+                .setContentText(message)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                .build();
 
         notificationManager.notify(2, notification);
 
     }//sendOnChannel2 method
 
-    private void startAlarm(){
 
-
-    }//startAlarm method
-
-    @Override
-    public void onTimePicked(String time) {
-        settingsFragment.setTime(time);
-    }//onTimePicked method
 }//MainActivity class
