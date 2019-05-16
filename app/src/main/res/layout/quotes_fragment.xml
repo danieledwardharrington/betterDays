@@ -18,7 +18,7 @@
         android:textSize="100sp"
         android:textColor="@color/titleTextColor"
         android:id="@+id/quote_text_view"
-        android:shadowColor="@color/black"
+        android:shadowColor="#000000"
         android:shadowRadius="1.6"
         android:shadowDx="1.5"
         android:shadowDy="1.3"

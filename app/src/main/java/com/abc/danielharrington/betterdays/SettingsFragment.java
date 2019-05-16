@@ -65,7 +65,7 @@ public class SettingsFragment extends Fragment implements AdapterView.OnItemSele
         quotesSpinner.setAdapter(quotesAdapter);
         quotesSpinner.setOnItemSelectedListener(this);
 
-        themesSpinner = view.findViewById(R.id.per_day_spinner);
+        themesSpinner = view.findViewById(R.id.themes_spinner);
         ArrayAdapter<CharSequence> themeAdapter = ArrayAdapter.createFromResource(getContext(), R.array.bg_themes, android.R.layout.simple_spinner_item);
         themeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         themesSpinner.setAdapter(themeAdapter);
@@ -171,22 +171,22 @@ public class SettingsFragment extends Fragment implements AdapterView.OnItemSele
 
         switch(THEMES_SPINNER_VALUE){
             case "DEFAULT":
-                quotesLayout.setBackgroundColor(getActivity().getResources().getColor(R.color.signBlue));
+                quotesLayout.setBackgroundColor(getResources().getColor(R.color.signBlue));
                 break;
             case "FOREST":
-                quotesLayout.setBackground(getActivity().getResources().getDrawable(R.drawable.img_forest));
+                quotesLayout.setBackground(getResources().getDrawable(R.drawable.img_forest));
                 break;
             case "SPACE":
-                quotesLayout.setBackground(getActivity().getResources().getDrawable(R.drawable.img_space));
+                quotesLayout.setBackground(getResources().getDrawable(R.drawable.img_space));
                 break;
             case "MOUNTAIN":
-                quotesLayout.setBackground(getActivity().getResources().getDrawable(R.drawable.img_mountain));
+                quotesLayout.setBackground(getResources().getDrawable(R.drawable.img_mountain));
                 break;
             case "BEACH":
-                quotesLayout.setBackground(getActivity().getResources().getDrawable(R.drawable.img_beach));
+                quotesLayout.setBackground(getResources().getDrawable(R.drawable.img_beach));
                 break;
             default:
-                quotesLayout.setBackgroundColor(getActivity().getResources().getColor(R.color.signBlue));
+                quotesLayout.setBackgroundColor(getResources().getColor(R.color.signBlue));
                 break;
         }//switch
 

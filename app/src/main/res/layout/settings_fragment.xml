@@ -27,6 +27,7 @@
         android:layout_marginTop="65dp"
         android:layout_marginRight="30dp"
         android:layout_alignParentRight="true"
+        android:background="@color/titleTextColor"
         android:id="@+id/themes_spinner"
         />
 
