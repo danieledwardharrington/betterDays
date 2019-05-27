@@ -8,12 +8,7 @@ android:id="@+id/quotes_layout"
 
 
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/signBlue"
-        android:id="@+id/quotes_background_layout"
-        >
+
 
         <TextView
             android:layout_width="wrap_content"
@@ -30,6 +25,6 @@ android:id="@+id/quotes_layout"
             android:shadowDy="1.3"
             />
 
-    </RelativeLayout>
+
 
 </RelativeLayout>
