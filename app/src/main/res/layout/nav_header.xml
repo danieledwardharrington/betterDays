@@ -19,6 +19,7 @@
         android:textStyle="bold|italic"
         android:textColor="@color/titleTextColor"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:background="@color/crimson"
         />
 
 </LinearLayout>

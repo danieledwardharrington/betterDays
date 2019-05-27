@@ -1,15 +1,23 @@
 package com.abc.danielharrington.betterdays;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Random;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -30,13 +38,13 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     private String theme;
     private int notifications;
 
-    int hour;
-    int minute;
     ArrayList<Calendar> calList;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-        setPreferencesFromResource(R.xml.preferences, rootKey);
+        addPreferencesFromResource(R.xml.preferences);
+
+
 
         themePreference = findPreference("theme_preference");
         notificationsPreference = findPreference("notifications_preference");
@@ -49,6 +57,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             @Override
             public boolean onPreferenceClick(Preference preference) {
                 saveData();
+
                 return true;
             }
         });
@@ -102,11 +111,49 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
     //method to set repeating notification alarms (random times)
     public void setAlarms(){
+        Random rand = new Random();
+        int hour;
+        int minute;
 
+        for (int i = 0; i < NOTIFICATIONS_PER_DAY; i++){
+            hour = rand.nextInt(25);
+            minute = rand.nextInt(61);
+            Calendar cal = Calendar.getInstance();
+            cal.set(Calendar.HOUR_OF_DAY, hour);
+            cal.set(Calendar.MINUTE, minute);
+            cal.set(Calendar.SECOND, 0);
+
+            calList.add(cal);
+        }//for
+
+        for(Calendar cal: calList) {
+            int i = 0;
+            AlarmManager alarmManager = (AlarmManager) getContext().getSystemService(Context.ALARM_SERVICE);
+            Intent intent = new Intent(getContext(), AlertReceiver.class);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), 1, intent, i);
+
+            alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+            i++;
+        }//for
     }//setAlarms method
 
     //method to clear the alarms
     public void clearAlarms(){
+        for(Calendar cal: calList) {
+            int i = 0;
+            AlarmManager alarmManager = (AlarmManager) getContext().getSystemService(Context.ALARM_SERVICE);
+            Intent intent = new Intent(getContext(), AlertReceiver.class);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), 1, intent, i);
+
+            alarmManager.cancel(pendingIntent);
+            i++;
+        }//for
 
     }//clearAlarms method
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        view.setBackgroundResource(R.color.signBlue);
+    }
 }//SettingsFragment class

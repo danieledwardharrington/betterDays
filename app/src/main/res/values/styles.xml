@@ -7,8 +7,8 @@
         <item name="colorPrimaryDark">@color/signBlue</item>
         <item name="colorAccent">@color/crimson</item>
         <item name="android:textColor">@color/titleTextColor</item>
-        <item name="android:background">@color/signBlue</item>
         <item name="android:textColorSecondary">@color/titleTextColor</item>
+        <item name="alertDialogTheme">@style/AlertDialogStyle</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -17,11 +17,16 @@
 
     </style>
 
-    <style name="SwitchStyle" parent="Theme.AppCompat.Light">
-        <item name="colorControlActivated">@color/crimson</item>
-        <item name="colorSwitchThumbNormal">@color/slateGray</item>
-        <item name="android:colorForeground">@color/titleTextColor</item>
+    <style name="AlertDialogStyle" parent="AlertDialog.AppCompat">
+        <item name="colorPrimary">@color/midnightBlue</item>
+        <item name="colorPrimaryDark">@color/signBlue</item>
+        <item name="colorAccent">@color/crimson</item>
+        <item name="android:textColor">@color/titleTextColor</item>
+        <item name="android:background">@color/signBlue</item>
+        <item name="android:popupBackground">@color/signBlue</item>
+        <item name="android:windowBackground">@color/signBlue</item>
+        <item name="android:itemBackground">@color/signBlue</item>
+        <item name="android:textColorSecondary">@color/titleTextColor</item>
     </style>
-
 
 </resources>

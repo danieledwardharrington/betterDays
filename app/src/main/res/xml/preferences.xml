@@ -4,6 +4,7 @@
 
     >
 
+    <PreferenceCategory>
     <ListPreference
         android:key="notifications_preference"
         android:title="@string/per_day_string"
@@ -12,7 +13,9 @@
         android:defaultValue="@string/per_day_default"
         android:summary="@string/per_day_summary"
         />
+    </PreferenceCategory>
 
+    <PreferenceCategory>
     <ListPreference
         android:key="theme_preference"
         android:title="@string/themes_string"
@@ -21,12 +24,15 @@
         android:defaultValue="@string/themes_default_value"
         android:summary="@string/themes_summary"
         />
+    </PreferenceCategory>
 
+    <PreferenceCategory>
     <Preference
     android:key="save_preference_button"
     android:title="Save"
     android:summary=""
         />
+    </PreferenceCategory>
 
 
 

@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private NotificationManagerCompat notificationManager;
     private QuotesFragment quotesFragment;
     private AboutFragment aboutFragment;
+    private SettingsFragment settingsFragment;
 
     private String appTheme;
     private RelativeLayout quotesBackgroundLayout;
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         quotesFragment = new QuotesFragment();
         aboutFragment = new AboutFragment();
+        settingsFragment = new SettingsFragment();
 
         quotesBackgroundLayout = findViewById(R.id.quotes_background_layout);
 
@@ -62,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navView.setNavigationItemSelectedListener(this);
 
         if(savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new QuotesFragment()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, quotesFragment).commit();
             navView.setCheckedItem(R.id.nav_quotes);
         }//if
 
@@ -76,13 +78,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.nav_quotes:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, quotesFragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new QuotesFragment()).commit();
                 break;
             case R.id.nav_about:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, aboutFragment).commit();
                 break;
             case R.id.nav_settings:
-                startActivity(new Intent(this, SettingsActivity.class));
+
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, settingsFragment).commit();
                 break;
             case R.id.nav_share:
 
