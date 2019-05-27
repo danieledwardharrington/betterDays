@@ -1,26 +1,30 @@
 package com.abc.danielharrington.betterdays;
 
 import android.app.Notification;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.TimePickerDialog;
-import android.os.Build;
-import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.NotificationManagerCompat;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
+
+import androidx.annotation.NonNull;
+import com.google.android.material.navigation.NavigationView;
+
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TimePicker;
+import android.widget.RelativeLayout;
 
 import static com.abc.danielharrington.betterdays.BetterDays.CHANNEL_1_ID;
 import static com.abc.danielharrington.betterdays.BetterDays.CHANNEL_2_ID;
+import static com.abc.danielharrington.betterdays.SettingsFragment.NOTS_PREF;
+import static com.abc.danielharrington.betterdays.SettingsFragment.SHARED_PREFS;
+import static com.abc.danielharrington.betterdays.SettingsFragment.THEME_PREF;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -28,14 +32,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private NotificationManagerCompat notificationManager;
     private QuotesFragment quotesFragment;
     private AboutFragment aboutFragment;
-    private SettingsFragment settingsFragment;
+
+    private String appTheme;
+    private RelativeLayout quotesBackgroundLayout;
+    private int appNotifications;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         quotesFragment = new QuotesFragment();
         aboutFragment = new AboutFragment();
-        settingsFragment = new SettingsFragment();
+
+        quotesBackgroundLayout = findViewById(R.id.quotes_background_layout);
 
         notificationManager = NotificationManagerCompat.from(this);
 
@@ -54,9 +62,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navView.setNavigationItemSelectedListener(this);
 
         if(savedInstanceState == null) {
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new QuotesFragment()).commit();
-        navView.setCheckedItem(R.id.nav_quotes);
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new QuotesFragment()).commit();
+            navView.setCheckedItem(R.id.nav_quotes);
         }//if
+
+        loadData();
+        updateTheme();
 
 
     }//onCreate method
@@ -71,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, aboutFragment).commit();
                 break;
             case R.id.nav_settings:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, settingsFragment).commit();
+                startActivity(new Intent(this, SettingsActivity.class));
                 break;
             case R.id.nav_share:
 
@@ -95,36 +106,39 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }//onBackPressed
 
-    public void sendOnChannel1(View view){
-        String title = "Better Days";
-        String message = "New Quote Available";
 
-        Notification notification = new NotificationCompat.Builder(this, CHANNEL_1_ID)
-                .setSmallIcon(R.drawable.ic_quotes)
-                .setContentTitle(title).setContentText(message)
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
-                .build();
+    //a method to update the background theme; called by onCreate
+    public void updateTheme(){
 
-        notificationManager.notify(1, notification);
+        switch(appTheme){
+            case "Forest":
+                quotesBackgroundLayout.setBackgroundResource(R.drawable.img_forest);
+                break;
+            case "Beach":
+                quotesBackgroundLayout.setBackgroundResource(R.drawable.img_beach);
+                break;
+            case "Space":
+                quotesBackgroundLayout.setBackgroundResource(R.drawable.img_space);
+                break;
+            case "Mountain":
+                quotesBackgroundLayout.setBackgroundResource(R.drawable.img_mountain);
+                break;
+            case "Default":
+                quotesBackgroundLayout.setBackgroundResource(R.color.signBlue);
+                break;
+            default:
+                quotesBackgroundLayout.setBackgroundResource(R.color.signBlue);
+                break;
+        }//switch
 
-    }//sendOnChannel1 method
+    }//updateTheme method
 
-    public void sendOnChannel2(View view){
-        String title = "Better Days";
-        String message = "New Quote Available";
-
-        Notification notification = new NotificationCompat.Builder(this, CHANNEL_2_ID)
-                .setSmallIcon(R.drawable.ic_quotes)
-                .setContentTitle(title)
-                .setContentText(message)
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
-                .build();
-
-        notificationManager.notify(2, notification);
-
-    }//sendOnChannel2 method
+    //method to load the saved data
+    public void loadData(){
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        appTheme = sharedPreferences.getString(THEME_PREF, "Default");
+        appNotifications = sharedPreferences.getInt(NOTS_PREF, 0);
+    }//loadData method
 
 
 }//MainActivity class

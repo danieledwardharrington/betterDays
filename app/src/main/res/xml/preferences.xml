@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    >
+
+    <ListPreference
+        android:key="notifications_preference"
+        android:title="@string/per_day_string"
+        android:entries="@array/quotes_per_day_numbers"
+        android:entryValues="@array/quotes_per_day_numbers"
+        android:defaultValue="@string/per_day_default"
+        android:summary="@string/per_day_summary"
+        />
+
+    <ListPreference
+        android:key="theme_preference"
+        android:title="@string/themes_string"
+        android:entries="@array/bg_themes"
+        android:entryValues="@array/bg_themes"
+        android:defaultValue="@string/themes_default_value"
+        android:summary="@string/themes_summary"
+        />
+
+    <Preference
+    android:key="save_preference_button"
+    android:title="Save"
+    android:summary=""
+        />
+
+
+
+</PreferenceScreen>

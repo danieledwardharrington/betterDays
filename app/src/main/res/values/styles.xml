@@ -6,6 +6,9 @@
         <item name="colorPrimary">@color/midnightBlue</item>
         <item name="colorPrimaryDark">@color/signBlue</item>
         <item name="colorAccent">@color/crimson</item>
+        <item name="android:textColor">@color/titleTextColor</item>
+        <item name="android:background">@color/signBlue</item>
+        <item name="android:textColorSecondary">@color/titleTextColor</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
