@@ -26,10 +26,8 @@ class SettingsFragment : PreferenceFragmentCompat() {
     private var notificationsPreference: ListPreference? = null
     private var savePreference: Preference? = null
 
-    //private var THEME_SELECTED: String? = null
     private var NOTIFICATIONS_PER_DAY: Int = 0
 
-    //private var theme: String? = null
     private var notifications: Int = 0
 
     private var calList: ArrayList<Calendar> = ArrayList()
@@ -64,7 +62,8 @@ class SettingsFragment : PreferenceFragmentCompat() {
     }//onCreatePreferences
 
     //method to save preferences when the user clicks "SAVE"
-    fun saveData() {
+    private fun saveData() {
+        clearAlarms()
 
         if (NOTIFICATIONS_PER_DAY > 0) {
             setAlarms()
@@ -91,7 +90,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
     }//loadData method
 
     //method to set repeating notification alarms (random times)
-    fun setAlarms() {
+    private fun setAlarms() {
         val rand = Random()
         var hour: Int
         var minute: Int
@@ -119,7 +118,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
     }//setAlarms method
 
     //method to clear the alarms
-    fun clearAlarms() {
+    private fun clearAlarms() {
         for (cal in calList) {
             var i = 0
             val alarmManager = context!!.getSystemService(Context.ALARM_SERVICE) as AlarmManager
@@ -136,14 +135,14 @@ class SettingsFragment : PreferenceFragmentCompat() {
         super.onViewCreated(view, savedInstanceState)
         view.setBackgroundResource(R.color.signBlue)
         activity!!.title = "Settings"
-    }
+    }//onViewCreated method
 
     companion object {
 
-        val SHARED_PREFS = "sharedPrefs"
-        val THEME_PREF = "themePreference"
-        val NOTS_PREF = "notificationsPreference"
+        const val SHARED_PREFS = "sharedPrefs"
+        const val THEME_PREF = "themePreference"
+        const val NOTS_PREF = "notificationsPreference"
         var theme: String? = null
         var THEME_SELECTED: String? = null
-    }
+    }//companion object
 }//SettingsFragment class

@@ -1,6 +1,7 @@
 package com.abc.danielharrington.betterdays
 
 import android.app.Notification
+import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -28,9 +29,16 @@ class AlertReceiver : BroadcastReceiver() {
         val title = "Better Days"
         val message = "New Quote Available"
 
+        var intent: Intent = Intent(theContext!!, MainActivity::class.java)
+        intent.putExtra("From", "quotesFragment")
+
+        var pendingIntent: PendingIntent = PendingIntent.getActivity(theContext, 100, intent, PendingIntent.FLAG_CANCEL_CURRENT)
+
         val notification = NotificationCompat.Builder(theContext!!, CHANNEL_1_ID)
                 .setSmallIcon(R.drawable.ic_quotes)
-                .setContentTitle(title).setContentText(message)
+                .setContentTitle(title)
+                .setContentText(message)
+                .setAutoCancel(true)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setCategory(NotificationCompat.CATEGORY_MESSAGE)
                 .build()

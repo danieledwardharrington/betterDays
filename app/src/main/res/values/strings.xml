@@ -4,11 +4,11 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="per_day_string">Notifications Per Day</string>
-    <string name="per_day_summary">Amount of quotes you receive per day (all times are random)</string>
+    <string name="per_day_summary">Quotes received per day (all times are random)</string>
     <string name="per_day_default">0</string>
 
     <string name="themes_string">Background Theme</string>
-    <string name="themes_summary">The background theme</string>
+    <string name="themes_summary">Background theme (Restart after saving to see changes)</string>
     <string name="themes_default_value">Default</string>
 
     <string-array name="quotes_per_day_numbers">

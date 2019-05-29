@@ -1,6 +1,7 @@
 package com.abc.danielharrington.betterdays
 
 import android.content.Context
+import android.content.Intent
 import com.google.android.material.navigation.NavigationView
 
 import androidx.core.view.GravityCompat
@@ -30,8 +31,26 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private var appNotifications: Int = 0
 
+    companion object{
+        var quotesList: ArrayList<String> = ArrayList()
+        var speakersList: ArrayList<String> = ArrayList()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //populating the quotes and speakers lists
+        populateLists()
+
+        //for launching a fragment from notification
+        var type: String = getIntent().getStringExtra("From")
+        if(type != null){
+            when (type){
+                "quotesFragment" -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.fragment_container, quotesFragment!!).commit()
+                }//quotesFragment
+            }//when
+        }//if
 
         aboutFragment = AboutFragment()
         settingsFragment = SettingsFragment()
@@ -64,7 +83,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         when (item.itemId) {
             R.id.nav_quotes -> supportFragmentManager.beginTransaction().replace(R.id.fragment_container, quotesFragment!!).commit()
             R.id.nav_about -> supportFragmentManager.beginTransaction().replace(R.id.fragment_container, aboutFragment!!).commit()
-            R.id.nav_settings -> supportFragmentManager.beginTransaction().replace(R.id.fragment_container, settingsFragment!!).commit()
+            R.id.nav_settings -> {
+                val intent: Intent = Intent(this, SettingsActivity::class.java)
+                startActivity(intent)
+            }
             R.id.nav_share -> {
             }
         }//when
@@ -72,7 +94,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawer!!.closeDrawer(GravityCompat.START)
         return true
     }
-
 
     override fun onBackPressed() {
         if (drawer!!.isDrawerOpen(GravityCompat.START)) {
@@ -85,12 +106,22 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     //method to load the saved data
     fun loadData() {
-        val context = applicationContext
+        //val context = applicationContext
 
-        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
-        QUOTES_THEME = sharedPreferences.getString(THEME_PREF, "Beach")
+        val sharedPreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE)
+        QUOTES_THEME = sharedPreferences.getString(THEME_PREF, "")
         appNotifications = sharedPreferences.getInt(NOTS_PREF, 0)
     }//loadData method
+
+    //method to populate the lists
+    fun populateLists(){
+        //clearing them to avoid repeats
+        quotesList.clear()
+        speakersList.clear()
+
+
+
+    }//populateLists method
 
 
 }//MainActivity class

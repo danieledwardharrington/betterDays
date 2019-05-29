@@ -17,19 +17,35 @@ class QuotesFragment() : Fragment() {
     }//companion object
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        loadData()
+        //loadData()
 
         var rootView = inflater.inflate(R.layout.quotes_fragment, container, false)
 
         activity!!.title = "Quotes"
 
-        if (QUOTES_THEME == "Forest") {
-            rootView.setBackgroundResource(R.drawable.img_forest)
-        } else if (QUOTES_THEME == "Beach") {
-            rootView.setBackgroundResource(R.drawable.img_beach)
-        } else if (QUOTES_THEME == "Space") {
-            rootView.setBackgroundResource(R.drawable.img_space)
-        }
+        //when for the background
+        when (QUOTES_THEME){
+            "Forest" ->{
+                rootView.setBackgroundResource(R.drawable.img_forest)
+            }//forest
+            "Beach" ->{
+                rootView.setBackgroundResource(R.drawable.img_beach)
+            }//beach
+            "Space" ->{
+                rootView.setBackgroundResource(R.drawable.img_space)
+            }//space
+            "Mountain" ->{
+                rootView.setBackgroundResource(R.drawable.img_mountain)
+            }//mountain
+            "Default" ->{
+                rootView.setBackgroundResource(R.color.signBlue)
+            }//default
+            else ->{
+                rootView.setBackgroundResource(R.color.signBlue)
+            }//else
+
+        }//when
+
         var testTV: TextView = rootView.findViewById(R.id.quote_text_view)
         testTV.text = QUOTES_THEME
         return rootView
