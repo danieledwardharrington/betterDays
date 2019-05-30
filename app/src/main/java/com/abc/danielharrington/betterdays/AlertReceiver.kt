@@ -11,6 +11,11 @@ import androidx.core.app.NotificationManagerCompat
 
 import com.abc.danielharrington.betterdays.BetterDays.Companion.CHANNEL_1_ID
 import com.abc.danielharrington.betterdays.BetterDays.Companion.CHANNEL_2_ID
+import com.abc.danielharrington.betterdays.MainActivity.Companion.quotesList
+import com.abc.danielharrington.betterdays.MainActivity.Companion.speakersList
+import com.abc.danielharrington.betterdays.QuotesFragment.Companion.quoteTextView
+import com.abc.danielharrington.betterdays.QuotesFragment.Companion.speakerTextView
+import kotlin.random.Random
 
 
 class AlertReceiver : BroadcastReceiver() {
@@ -29,10 +34,16 @@ class AlertReceiver : BroadcastReceiver() {
         val title = "Better Days"
         val message = "New Quote Available"
 
+        var index: Int = (Random.nextInt() % quotesList.size) + 1
+
+        quoteTextView?.text = quotesList.get(index)
+        speakerTextView?.text = speakersList.get(index)
+
+
         var intent: Intent = Intent(theContext!!, MainActivity::class.java)
         intent.putExtra("From", "quotesFragment")
 
-        var pendingIntent: PendingIntent = PendingIntent.getActivity(theContext, 100, intent, PendingIntent.FLAG_CANCEL_CURRENT)
+        var pendingIntent: PendingIntent = PendingIntent.getActivity(theContext, 100, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 
         val notification = NotificationCompat.Builder(theContext!!, CHANNEL_1_ID)
                 .setSmallIcon(R.drawable.ic_quotes)
@@ -41,6 +52,7 @@ class AlertReceiver : BroadcastReceiver() {
                 .setAutoCancel(true)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                .setContentIntent(pendingIntent)
                 .build()
 
         notificationManager!!.notify(1, notification)

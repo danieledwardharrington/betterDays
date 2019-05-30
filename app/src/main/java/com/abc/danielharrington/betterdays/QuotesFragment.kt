@@ -14,6 +14,10 @@ class QuotesFragment() : Fragment() {
     companion object {
 
         var QUOTES_THEME: String? = null
+
+        //for notifications
+        var quoteTextView: TextView? = null
+        var speakerTextView: TextView? = null
     }//companion object
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -22,6 +26,9 @@ class QuotesFragment() : Fragment() {
         var rootView = inflater.inflate(R.layout.quotes_fragment, container, false)
 
         activity!!.title = "Quotes"
+
+        quoteTextView = rootView.findViewById(R.id.quote_text_view)
+        speakerTextView = rootView.findViewById(R.id.speaker_text_view)
 
         //when for the background
         when (QUOTES_THEME){
@@ -46,14 +53,34 @@ class QuotesFragment() : Fragment() {
 
         }//when
 
-        var testTV: TextView = rootView.findViewById(R.id.quote_text_view)
-        testTV.text = QUOTES_THEME
         return rootView
     }//onCreateView method
 
+    /*
     fun updateTheme(theme: String?) {
-        QUOTES_THEME = theme
+                when (QUOTES_THEME){
+            "Forest" ->{
+                rootView.setBackgroundResource(R.drawable.img_forest)
+            }//forest
+            "Beach" ->{
+                rootView.setBackgroundResource(R.drawable.img_beach)
+            }//beach
+            "Space" ->{
+                rootView.setBackgroundResource(R.drawable.img_space)
+            }//space
+            "Mountain" ->{
+                rootView.setBackgroundResource(R.drawable.img_mountain)
+            }//mountain
+            "Default" ->{
+                rootView.setBackgroundResource(R.color.signBlue)
+            }//default
+            else ->{
+                rootView.setBackgroundResource(R.color.signBlue)
+            }//else
+
+        }//when
     }//updateTheme
+
 
     //method to load the saved data
     fun loadData() {
@@ -62,5 +89,6 @@ class QuotesFragment() : Fragment() {
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
         QUOTES_THEME = sharedPreferences.getString(SettingsFragment.THEME_PREF, "Beach")
     }//loadData method
+    */
 
 }//QuotesFragment class

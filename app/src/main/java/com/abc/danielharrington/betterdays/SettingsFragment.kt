@@ -63,12 +63,13 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
     //method to save preferences when the user clicks "SAVE"
     private fun saveData() {
+        //clearing any previously saved alarms to prevent tons of extra
         clearAlarms()
 
         if (NOTIFICATIONS_PER_DAY > 0) {
             setAlarms()
         } else {
-            clearAlarms()
+            clearAlarms() //clearing if the user is removing notifications
         }
 
         val sharedPreferences = activity!!.getSharedPreferences(SHARED_PREFS, MODE_PRIVATE)
@@ -82,12 +83,14 @@ class SettingsFragment : PreferenceFragmentCompat() {
         Toast.makeText(context, "Settings saved", Toast.LENGTH_SHORT).show()
     }//saveData method
 
+    /*
     //method to load the saved data
     fun loadData() {
         val sharedPreferences = context!!.getSharedPreferences(SHARED_PREFS, MODE_PRIVATE)
         theme = sharedPreferences.getString(THEME_PREF, "Default")
         notifications = sharedPreferences.getInt(NOTS_PREF, 0)
     }//loadData method
+    */
 
     //method to set repeating notification alarms (random times)
     private fun setAlarms() {
@@ -113,6 +116,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
             val pendingIntent = PendingIntent.getBroadcast(context, 1, intent, i)
 
             alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, cal.timeInMillis, AlarmManager.INTERVAL_DAY, pendingIntent)
+
             i++
         }//for
     }//setAlarms method

@@ -17,6 +17,9 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:textAlignment="center"
+        android:textSize="18sp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
         />
 
 </RelativeLayout>

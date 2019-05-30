@@ -10,16 +10,21 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 
 import android.content.SharedPreferences
+import android.content.res.AssetManager
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.widget.Toolbar
 import androidx.preference.PreferenceManager
 
 import android.view.MenuItem
 import android.widget.RelativeLayout
+import android.widget.Toast
 import com.abc.danielharrington.betterdays.QuotesFragment.Companion.QUOTES_THEME
 import com.abc.danielharrington.betterdays.SettingsFragment.Companion.NOTS_PREF
 import com.abc.danielharrington.betterdays.SettingsFragment.Companion.THEME_PREF
 import com.abc.danielharrington.betterdays.SettingsFragment.Companion.SHARED_PREFS
+import java.io.File
+import java.io.InputStream
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -42,6 +47,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         //populating the quotes and speakers lists
         populateLists()
 
+        /*
         //for launching a fragment from notification
         var type: String = getIntent().getStringExtra("From")
         if(type != null){
@@ -51,6 +57,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 }//quotesFragment
             }//when
         }//if
+        */
 
         aboutFragment = AboutFragment()
         settingsFragment = SettingsFragment()
@@ -76,6 +83,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         loadData()
         quotesFragment = QuotesFragment()
+
+        var quoteFrag: String = intent.getStringExtra("From") ?: ""
+
+        if(quoteFrag == "quotesFragment"){
+            supportFragmentManager.beginTransaction().replace(R.id.fragment_container, quotesFragment!!).commit()
+        }//if
 
     }//onCreate method
 
@@ -106,7 +119,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     //method to load the saved data
     fun loadData() {
-        //val context = applicationContext
 
         val sharedPreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE)
         QUOTES_THEME = sharedPreferences.getString(THEME_PREF, "")
@@ -114,14 +126,35 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }//loadData method
 
     //method to populate the lists
-    fun populateLists(){
+    private fun populateLists(){
         //clearing them to avoid repeats
         quotesList.clear()
         speakersList.clear()
 
+        var lineFromFile: String = ""
 
+        try {
+            applicationContext.assets.open("quotesTextFile.txt").bufferedReader().forEachLine {
+                lineFromFile = it
+
+                if (lineFromFile.contains("\"")) {
+                    quotesList.add(lineFromFile)
+                }//if
+                else {
+                    speakersList.add(lineFromFile)
+                }//else
+
+            }//foreach
+        } catch(e: Exception){
+            createToast("Error getting quotes!")
+        }//catch
 
     }//populateLists method
+
+    //easy method for toasts
+    private fun createToast(message: String){
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }//createToast method
 
 
 }//MainActivity class
