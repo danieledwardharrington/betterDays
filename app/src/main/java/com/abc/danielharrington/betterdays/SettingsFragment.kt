@@ -64,7 +64,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
     //method to save preferences when the user clicks "SAVE"
     private fun saveData() {
         //clearing any previously saved alarms to prevent tons of extra
-        clearAlarms()
+        //clearAlarms()
 
         if (NOTIFICATIONS_PER_DAY > 0) {
             setAlarms()
@@ -82,15 +82,6 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
         Toast.makeText(context, "Settings saved", Toast.LENGTH_SHORT).show()
     }//saveData method
-
-    /*
-    //method to load the saved data
-    fun loadData() {
-        val sharedPreferences = context!!.getSharedPreferences(SHARED_PREFS, MODE_PRIVATE)
-        theme = sharedPreferences.getString(THEME_PREF, "Default")
-        notifications = sharedPreferences.getInt(NOTS_PREF, 0)
-    }//loadData method
-    */
 
     //method to set repeating notification alarms (random times)
     private fun setAlarms() {

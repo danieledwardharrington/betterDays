@@ -36,8 +36,8 @@ class AlertReceiver : BroadcastReceiver() {
 
         var index: Int = (Random.nextInt() % quotesList.size) + 1
 
-        quoteTextView?.text = quotesList.get(index)
-        speakerTextView?.text = speakersList.get(index)
+        quoteTextView?.setText(quotesList.get(index))
+        speakerTextView?.setText(speakersList.get(index))
 
 
         var intent: Intent = Intent(theContext!!, MainActivity::class.java)

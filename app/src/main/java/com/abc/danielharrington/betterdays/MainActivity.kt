@@ -47,18 +47,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         //populating the quotes and speakers lists
         populateLists()
 
-        /*
-        //for launching a fragment from notification
-        var type: String = getIntent().getStringExtra("From")
-        if(type != null){
-            when (type){
-                "quotesFragment" -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.fragment_container, quotesFragment!!).commit()
-                }//quotesFragment
-            }//when
-        }//if
-        */
-
         aboutFragment = AboutFragment()
         settingsFragment = SettingsFragment()
 
@@ -97,11 +85,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_quotes -> supportFragmentManager.beginTransaction().replace(R.id.fragment_container, quotesFragment!!).commit()
             R.id.nav_about -> supportFragmentManager.beginTransaction().replace(R.id.fragment_container, aboutFragment!!).commit()
             R.id.nav_settings -> {
-                val intent: Intent = Intent(this, SettingsActivity::class.java)
+                val intent = Intent(this, SettingsActivity::class.java)
                 startActivity(intent)
-            }
+            }//settings
             R.id.nav_share -> {
-            }
+                val shareIntent = Intent(Intent.ACTION_SEND)
+                shareIntent.type = "text/plain"
+                var shareBody = "Better Days: A Wellness Companion App"
+                var shareSubject = "Check out this app!"
+                shareIntent.putExtra(Intent.EXTRA_SUBJECT, shareSubject)
+                shareIntent.putExtra(Intent.EXTRA_TEXT, shareBody)
+                startActivity(Intent.createChooser(shareIntent, "Share using"))
+            }//share
         }//when
 
         drawer!!.closeDrawer(GravityCompat.START)

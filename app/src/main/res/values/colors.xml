@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="midnightBlue">#1E1E8D</color>
+    <color name="midnightBlue">#364A61</color>
     <color name="signBlue">#002952</color>
     <color name="black">#000000</color>
     <color name="colorAccent">#D81B60</color>
@@ -9,4 +9,5 @@
     <color name="slateGray">#708090</color>
     <color name="crimson">#990000</color>
     <color name="iconColor">#F5F5F5</color>
+    <color name="orangeRed">#FF3600</color>
 </resources>
