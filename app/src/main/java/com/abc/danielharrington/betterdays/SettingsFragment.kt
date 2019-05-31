@@ -4,10 +4,8 @@ import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
-import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.preference.ListPreference
 import androidx.preference.Preference
@@ -27,8 +25,6 @@ class SettingsFragment : PreferenceFragmentCompat() {
     private var savePreference: Preference? = null
 
     private var NOTIFICATIONS_PER_DAY: Int = 0
-
-    private var notifications: Int = 0
 
     private var calList: ArrayList<Calendar> = ArrayList()
 

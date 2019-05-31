@@ -13,7 +13,9 @@ import com.abc.danielharrington.betterdays.BetterDays.Companion.CHANNEL_1_ID
 import com.abc.danielharrington.betterdays.BetterDays.Companion.CHANNEL_2_ID
 import com.abc.danielharrington.betterdays.MainActivity.Companion.quotesList
 import com.abc.danielharrington.betterdays.MainActivity.Companion.speakersList
+import com.abc.danielharrington.betterdays.QuotesFragment.Companion.quoteText
 import com.abc.danielharrington.betterdays.QuotesFragment.Companion.quoteTextView
+import com.abc.danielharrington.betterdays.QuotesFragment.Companion.speakerText
 import com.abc.danielharrington.betterdays.QuotesFragment.Companion.speakerTextView
 import kotlin.random.Random
 
@@ -34,10 +36,13 @@ class AlertReceiver : BroadcastReceiver() {
         val title = "Better Days"
         val message = "New Quote Available"
 
-        var index: Int = (Random.nextInt() % quotesList.size) + 1
+        var index: Int = Random.nextInt(quotesList.size)
 
-        quoteTextView?.setText(quotesList.get(index))
-        speakerTextView?.setText(speakersList.get(index))
+        quoteText = quotesList[index]
+        speakerText = speakersList[index]
+
+        quoteTextView!!.text = quotesList[index]
+        speakerTextView!!.text = speakersList[index]
 
 
         var intent: Intent = Intent(theContext!!, MainActivity::class.java)

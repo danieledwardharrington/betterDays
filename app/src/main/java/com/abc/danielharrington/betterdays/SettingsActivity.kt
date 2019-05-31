@@ -45,7 +45,7 @@ class SettingsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
             R.id.nav_settings -> supportFragmentManager.beginTransaction().replace(R.id.fragment_container, SettingsFragment()).commit()
             R.id.nav_share -> {
                 val shareIntent = Intent(Intent.ACTION_SEND)
-                shareIntent.setType("text")
+                shareIntent.type = "text/plain"
                 var shareBody = "The body text for sharing the app"
                 var shareSubject = "The subject"
                 shareIntent.putExtra(Intent.EXTRA_SUBJECT, shareSubject)

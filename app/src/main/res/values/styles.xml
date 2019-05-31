@@ -11,6 +11,7 @@
         <item name="alertDialogTheme">@style/AlertDialogStyle</item>
         <item name="android:listDivider">@color/orangeRed</item>
         <item name="android:dividerHeight">1dp</item>
+        <item name="textColorAlertDialogListItem">@color/titleTextColor</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -18,7 +19,7 @@
         <item name="windowNoTitle">true</item>
         <item name="android:listDivider">@color/orangeRed</item>
         <item name="android:dividerHeight">1dp</item>
-
+        <item name="textColorAlertDialogListItem">@color/titleTextColor</item>
     </style>
 
     <style name="AlertDialogStyle" parent="AlertDialog.AppCompat">

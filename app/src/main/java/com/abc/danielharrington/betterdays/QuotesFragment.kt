@@ -6,14 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.preference.PreferenceManager
-import kotlinx.android.synthetic.*
 
-class QuotesFragment() : Fragment() {
+class QuotesFragment : Fragment() {
 
     companion object {
 
         var QUOTES_THEME: String? = null
+        var quoteText: String? = null
+        var speakerText: String? = null
 
         //for notifications
         var quoteTextView: TextView? = null
@@ -29,6 +29,9 @@ class QuotesFragment() : Fragment() {
 
         quoteTextView = rootView.findViewById(R.id.quote_text_view)
         speakerTextView = rootView.findViewById(R.id.speaker_text_view)
+
+        quoteTextView!!.text = quoteText
+        speakerTextView!!.text = speakerText
 
         //when for the background
         when (QUOTES_THEME){
