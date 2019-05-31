@@ -128,7 +128,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         quotesList.clear()
         speakersList.clear()
 
-        var lineFromFile: String = ""
+        var lineFromFile: String
 
         try {
             applicationContext.assets.open("quotesTextFile.txt").bufferedReader().forEachLine {

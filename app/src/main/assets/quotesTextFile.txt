@@ -112,21 +112,21 @@
 -Tenzin Gyatso
 "If you're going through hell, keep going."
 -Winston Churchill
-“When I let go of what I am, I become what I might be.”
+"When I let go of what I am, I become what I might be."
 -Lao Tzu
-“If you can’t fly then run, if you can’t run then walk, if you can’t walk then crawl, but whatever you do you have to keep moving forward.”
+"If you can’t fly then run, if you can’t run then walk, if you can’t walk then crawl, but whatever you do you have to keep moving forward."
 -Martin Luther King, Jr.
-“The man who moves a mountain begins by carrying away small stones.”
+"The man who moves a mountain begins by carrying away small stones."
 -Confucius
-“By being yourself, you put something wonderful in the world that was not there before.”
+"By being yourself, you put something wonderful in the world that was not there before."
 -Edwin Elliot
-“Unexpected kindness is the most powerful, least costly and most underrated agent of human change.”
+"Unexpected kindness is the most powerful, least costly and most underrated agent of human change."
 -Bob Kerrey
-“Each morning we are born again. What we do today is what matters most.”
+"Each morning we are born again. What we do today is what matters most."
 -Buddha
-“Believe in yourself and all that you are. Know that there is something inside of you that is greater than any obstacle.”
+"Believe in yourself and all that you are. Know that there is something inside of you that is greater than any obstacle."
 -Christian D Larson
-“What lies behind us and what lies before us are tiny matters compared to what lies within us.”
+"What lies behind us and what lies before us are tiny matters compared to what lies within us."
 -Henry S. Haskins
 "Every oak tree started out as a couple of nuts who stood their ground."
 -Anonymous
@@ -158,13 +158,55 @@
 -Fred Rogers
 "Courage doesn’t always roar. Sometimes courage is the quiet voice at the end of the day saying, ‘I will try again tomorrow.'"
 -Mary Anne Radmacher
-“Never confuse a single defeat with a final defeat.”
+"Never confuse a single defeat with a final defeat."
 -F. Scott Fitzgerald
-“The best time to plant a tree is twenty years ago. The second best time is today.”
+"The best time to plant a tree is twenty years ago. The second best time is today."
 -Proverb
-“You are on the floor crying, and you have been on the floor crying for days. And that is you being brave. That is you getting through it as best you know how. No one else can decide what your tough looks like.”
+"You are on the floor crying, and you have been on the floor crying for days. And that is you being brave. That is you getting through it as best you know how. No one else can decide what your tough looks like."
 -Clementine von Radics
 “You lost your way. Not your worth.”
 -Chris McGeown
-“I knew that I was dying. Something in me said go ahead, sleep, become them, accept. Then something else in me said no, save the tiniest bit. It needn’t be much, just a spark. A spark can set a whole forest on fire.”
+"I knew that I was dying. Something in me said go ahead, sleep, become them, accept. Then something else in me said no, save the tiniest bit. It needn’t be much, just a spark. A spark can set a whole forest on fire."
 -Charles Bukowski
+"Great men aren't born great, they grow great."
+-Mario Puzo (The Godfather)
+"Tomorrow is always fresh, with no mistakes in it yet."
+-L.M. Montgomery
+"And now that you don’t have to be perfect, you can be good."
+-John Steinbeck
+"She decided long ago that life was a long journey. She would be strong, and she would be weak, and both would be okay."
+-Tahereh Mafi (Furthermore)
+"A friend may be waiting behind a stranger’s face."
+-Maya Angelou (Letter to My Daughter)
+"None of us really changes over time. We only become more fully what we are."
+-Anne Rice (The Vampire Lestat)
+"All endings are also beginnings. We just don’t know it at the time."
+-Mitch Albom (The Five People You Meet In Heaven)
+"It’s no use going back to yesterday, because I was a different person then."
+-Lewis Carroll (Alice's Adventures in Wonderland)
+"Not all those who wander are lost."
+-J.R.R. Tolkein (The Fellowship of the Ring)
+"We are all in the gutter, but some of us are looking at the stars."
+-Oscar Wilde (Lady Windermere's Fan)
+"Pain is inevitable. Suffering is optional."
+-Haruki Murakami (What I Talk About When I Talk About Running)
+"Adversity is like a strong wind. It...tears away from us all but the things that cannot be torn, so that afterward we see ourselves as we really are, and not merely as we might like to be."
+-Arthur Golden (Memoirs of a Geisha)
+"We all make choices in life, but in the end our choices make us."
+-Armin Shimerman as Andrew Ryan (BioShock)
+"What is better - to be born good, or to overcome your evil nature through great effort?"
+-Charles Martinet as Paarthurnax (Skyrim)
+"Night gathers, and now my watch begins"
+-The Night's Watch (Game of Thrones)
+"my mother sacrificed her dreams so i could dream"
+-Rupi Kaur
+"After all, tomorrow is another day."
+-Vivien Leigh as Scarlett (Gone with the Wind)
+"Never forget what you are. The rest of the world will not. Wear it like armor, and it can never be used to hurt you."
+-Peter Dinklage as Tyrion Lannister (Game of Thrones)
+"No matter how the wind howls, the mountain cannot bow to it."
+-Pat Morita as The Emperor (Mulan)
+"If you hear a voice within you say 'you cannot paint,' then by all means paint and that voice will be silenced."
+-Vincent van Gogh
+"When everything seems to be going against you, remember that the airplane takes off against the wind, not with it."
+-Henry Ford
