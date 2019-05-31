@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private var quotesFragment: QuotesFragment? = null
     private var aboutFragment: AboutFragment? = null
     private var settingsFragment: SettingsFragment? = null
+    private var welcomeFragment: WelcomeFragment? = null
 
     private var appNotifications: Int = 0
 
@@ -49,6 +50,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         aboutFragment = AboutFragment()
         settingsFragment = SettingsFragment()
+        welcomeFragment = WelcomeFragment()
 
         setContentView(R.layout.activity_main)
 
@@ -65,7 +67,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         navView.setNavigationItemSelectedListener(this)
 
         if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction().replace(R.id.fragment_container, aboutFragment!!).commit()
+            supportFragmentManager.beginTransaction().replace(R.id.fragment_container, welcomeFragment!!).commit()
             navView.setCheckedItem(R.id.nav_quotes)
         }//if
 
