@@ -36,13 +36,15 @@ class AlertReceiver : BroadcastReceiver() {
         val title = "Better Days"
         val message = "New Quote Available"
 
-        var index: Int = Random.nextInt(quotesList.size)
-
+        var index: Int = 0
+        if(quotesList.size != 0) {
+            index = Random.nextInt(quotesList.size)
+        }//if
         quoteText = quotesList[index]
         speakerText = speakersList[index]
 
-        quoteTextView!!.text = quotesList[index]
-        speakerTextView!!.text = speakersList[index]
+        quoteTextView?.text = quotesList[index]
+        speakerTextView?.text = speakersList[index]
 
 
         var intent: Intent = Intent(theContext!!, MainActivity::class.java)

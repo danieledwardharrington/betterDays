@@ -39,6 +39,7 @@
         android:shadowRadius="1.6"
         android:shadowDx="1.5"
         android:shadowDy="1.3"
+        android:textAlignment="center"
         />
 
 </RelativeLayout>

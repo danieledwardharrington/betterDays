@@ -81,11 +81,14 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
     //method to set repeating notification alarms (random times)
     private fun setAlarms() {
+        //clearing any previously saved alarms to prevent tons of extra
+        clearAlarms()
+
         val rand = Random()
         var hour: Int
         var minute: Int
 
-        for (i in 0 until NOTIFICATIONS_PER_DAY) {
+        for (i in 0 until (NOTIFICATIONS_PER_DAY)) {
             hour = rand.nextInt(25)
             minute = rand.nextInt(61)
             val cal = Calendar.getInstance()
@@ -96,22 +99,24 @@ class SettingsFragment : PreferenceFragmentCompat() {
             calList.add(cal)
         }//for
 
+        var i = 0
         for (cal in calList) {
-            var i = 0
             val alarmManager = context!!.getSystemService(Context.ALARM_SERVICE) as AlarmManager
             val intent = Intent(context, AlertReceiver::class.java)
             val pendingIntent = PendingIntent.getBroadcast(context, 1, intent, i)
 
             alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, cal.timeInMillis, AlarmManager.INTERVAL_DAY, pendingIntent)
-
+            println(i)
             i++
         }//for
+
     }//setAlarms method
 
     //method to clear the alarms
     private fun clearAlarms() {
+
+        var i = 0
         for (cal in calList) {
-            var i = 0
             val alarmManager = context!!.getSystemService(Context.ALARM_SERVICE) as AlarmManager
             val intent = Intent(context, AlertReceiver::class.java)
             val pendingIntent = PendingIntent.getBroadcast(context, 1, intent, i)
