@@ -21,10 +21,15 @@ import android.widget.RelativeLayout
 import android.widget.Toast
 import com.abc.danielharrington.betterdays.QuotesFragment.Companion.QUOTES_THEME
 import com.abc.danielharrington.betterdays.SettingsFragment.Companion.NOTS_PREF
+import com.abc.danielharrington.betterdays.SettingsFragment.Companion.QUOTES_PREF
 import com.abc.danielharrington.betterdays.SettingsFragment.Companion.THEME_PREF
 import com.abc.danielharrington.betterdays.SettingsFragment.Companion.SHARED_PREFS
+import com.abc.danielharrington.betterdays.SettingsFragment.Companion.SPEAKERS_PREF
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import java.io.File
 import java.io.InputStream
+import java.lang.reflect.Type
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -44,9 +49,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        //populating the quotes and speakers lists
-        populateLists()
 
         aboutFragment = AboutFragment()
         settingsFragment = SettingsFragment()
@@ -71,7 +73,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             navView.setCheckedItem(R.id.nav_quotes)
         }//if
 
+        //load saved data (preferences and lists)
         loadData()
+
+        //if the list doesn't have anything to load, then populate
+        if(quotesList.size == 0 || speakersList.size == 0) {
+            //populating the quotes and speakers lists
+            populateLists()
+        }//if
+
         quotesFragment = QuotesFragment()
 
         var quoteFrag: String = intent.getStringExtra("From") ?: ""
@@ -115,11 +125,21 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }//onBackPressed
 
     //method to load the saved data
-    fun loadData() {
+    private fun loadData() {
 
         val sharedPreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE)
+        var gson: Gson = Gson()
+        var gson2: Gson = Gson()
         QUOTES_THEME = sharedPreferences.getString(THEME_PREF, "")
         appNotifications = sharedPreferences.getInt(NOTS_PREF, 0)
+
+        var quotesJson: String? = sharedPreferences.getString(QUOTES_PREF, null)
+        var type: Type = object : TypeToken<ArrayList<String>>(){}.type
+        quotesList = gson.fromJson(quotesJson, type)
+
+        var speakersJson: String? = sharedPreferences.getString(SPEAKERS_PREF, null)
+        var type2: Type = object : TypeToken<ArrayList<String>>(){}.type
+        speakersList = gson.fromJson(speakersJson, type2)
     }//loadData method
 
     //method to populate the lists

@@ -16,6 +16,9 @@ import java.util.Calendar
 import java.util.Random
 
 import android.content.Context.MODE_PRIVATE
+import com.abc.danielharrington.betterdays.MainActivity.Companion.quotesList
+import com.abc.danielharrington.betterdays.MainActivity.Companion.speakersList
+import com.google.gson.Gson
 
 
 class SettingsFragment : PreferenceFragmentCompat() {
@@ -62,6 +65,12 @@ class SettingsFragment : PreferenceFragmentCompat() {
         //clearing any previously saved alarms to prevent tons of extra
         //clearAlarms()
 
+        var gson: Gson = Gson()
+        var quotesJson: String = gson.toJson(quotesList)
+
+        var gson2: Gson = Gson()
+        var speakersJson: String = gson2.toJson(speakersList)
+
         if (NOTIFICATIONS_PER_DAY > 0) {
             setAlarms()
         } else {
@@ -72,6 +81,8 @@ class SettingsFragment : PreferenceFragmentCompat() {
         val editor = sharedPreferences.edit()
 
         editor.putString(THEME_PREF, THEME_SELECTED)
+        editor.putString(QUOTES_PREF, quotesJson)
+        editor.putString(SPEAKERS_PREF, speakersJson)
         editor.putInt(NOTS_PREF, NOTIFICATIONS_PER_DAY)
 
         editor.apply()
@@ -138,7 +149,8 @@ class SettingsFragment : PreferenceFragmentCompat() {
         const val SHARED_PREFS = "sharedPrefs"
         const val THEME_PREF = "themePreference"
         const val NOTS_PREF = "notificationsPreference"
-        var theme: String? = null
+        const val QUOTES_PREF = "quotesListPreference"
+        const val SPEAKERS_PREF = "speakersListPreference"
         var THEME_SELECTED: String? = null
     }//companion object
 }//SettingsFragment class
