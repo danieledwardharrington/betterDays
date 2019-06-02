@@ -41,12 +41,12 @@ class SettingsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.nav_quotes -> {
-                val intent = Intent(this, SettingsActivity::class.java)
+                val intent = Intent(this, MainActivity::class.java)
                 intent.putExtra("FromQuotes", "quotesFragment")
                 startActivity(intent)
             }//quotes
             R.id.nav_about -> {
-                val intent = Intent(this, SettingsActivity::class.java)
+                val intent = Intent(this, MainActivity::class.java)
                 intent.putExtra("FromAbout", "aboutFragment")
                 startActivity(intent)
             }//about

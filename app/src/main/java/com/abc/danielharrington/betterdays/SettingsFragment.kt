@@ -63,11 +63,11 @@ class SettingsFragment : PreferenceFragmentCompat() {
     //method to save preferences when the user clicks "SAVE"
     private fun saveData() {
 
-        val gson = Gson()
+        /*val gson = Gson()
         val quotesJson: String = gson.toJson(quotesList)
 
         val gson2 = Gson()
-        val speakersJson: String = gson2.toJson(speakersList)
+        val speakersJson: String = gson2.toJson(speakersList)*/
 
         if (NOTIFICATIONS_PER_DAY > 0) {
             setAlarms()
@@ -79,8 +79,8 @@ class SettingsFragment : PreferenceFragmentCompat() {
         val editor = sharedPreferences.edit()
 
         editor.putString(THEME_PREF, THEME_SELECTED)
-        editor.putString(QUOTES_PREF, quotesJson)
-        editor.putString(SPEAKERS_PREF, speakersJson)
+        //editor.putString(QUOTES_PREF, quotesJson)
+        //editor.putString(SPEAKERS_PREF, speakersJson)
         editor.putInt(NOTS_PREF, NOTIFICATIONS_PER_DAY)
 
         editor.apply()

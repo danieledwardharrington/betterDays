@@ -73,14 +73,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             navView.setCheckedItem(R.id.nav_quotes)
         }//if
 
-        //load saved data (preferences and lists)
-        loadData()
-
         //if the list doesn't have anything to load, then populate
         if(quotesList.size == 0 || speakersList.size == 0) {
             //populating the quotes and speakers lists
             populateLists()
         }//if
+
+        //load saved data (preferences and lists)
+        loadData()
 
         quotesFragment = QuotesFragment()
 
@@ -172,6 +172,19 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 }//else
 
             }//foreach
+
+            val gson = Gson()
+            val quotesJson: String = gson.toJson(quotesList)
+
+            val gson2 = Gson()
+            val speakersJson: String = gson2.toJson(speakersList)
+
+            val sharedPreferences = this.getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
+            editor.putString(QUOTES_PREF, quotesJson)
+            editor.putString(SPEAKERS_PREF, speakersJson)
+
+            editor.apply()
         } catch(e: Exception){
             createToast("Error getting quotes!")
         }//catch
