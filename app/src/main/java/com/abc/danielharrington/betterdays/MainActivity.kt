@@ -84,10 +84,20 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         quotesFragment = QuotesFragment()
 
-        var quoteFrag: String = intent.getStringExtra("From") ?: ""
+        val quoteFrag: String = intent.getStringExtra("From") ?: ""
+        val fromSettingsQuotes: String = intent.getStringExtra("FromQuotes") ?: ""
+        val fromSettingsAbout: String = intent.getStringExtra("FromAbout") ?: ""
 
         if(quoteFrag == "quotesFragment"){
             supportFragmentManager.beginTransaction().replace(R.id.fragment_container, quotesFragment!!).commit()
+        }//if
+
+        if(fromSettingsQuotes == "quotesFragment"){
+            supportFragmentManager.beginTransaction().replace(R.id.fragment_container, quotesFragment!!).commit()
+        }//if
+
+        if(fromSettingsAbout == "aboutFragment"){
+            supportFragmentManager.beginTransaction().replace(R.id.fragment_container, aboutFragment!!).commit()
         }//if
 
     }//onCreate method
@@ -103,8 +113,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_share -> {
                 val shareIntent = Intent(Intent.ACTION_SEND)
                 shareIntent.type = "text/plain"
-                var shareBody = "Better Days: A Wellness Companion App"
-                var shareSubject = "Check out this app!"
+                val shareBody = "Better Days: A Wellness Companion App"
+                val shareSubject = "Check out this app!"
                 shareIntent.putExtra(Intent.EXTRA_SUBJECT, shareSubject)
                 shareIntent.putExtra(Intent.EXTRA_TEXT, shareBody)
                 startActivity(Intent.createChooser(shareIntent, "Share using"))
@@ -128,18 +138,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private fun loadData() {
 
         val sharedPreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE)
-        var gson: Gson = Gson()
-        var gson2: Gson = Gson()
+        val gson = Gson()
+        val gson2 = Gson()
         QUOTES_THEME = sharedPreferences.getString(THEME_PREF, "")
         appNotifications = sharedPreferences.getInt(NOTS_PREF, 0)
 
-        var quotesJson: String? = sharedPreferences.getString(QUOTES_PREF, null)
-        var type: Type = object : TypeToken<ArrayList<String>>(){}.type
+        val quotesJson: String? = sharedPreferences.getString(QUOTES_PREF, "")
+        val type: Type = object : TypeToken<ArrayList<String>>(){}.type
         quotesList = gson.fromJson(quotesJson, type)
 
-        var speakersJson: String? = sharedPreferences.getString(SPEAKERS_PREF, null)
-        var type2: Type = object : TypeToken<ArrayList<String>>(){}.type
-        speakersList = gson.fromJson(speakersJson, type2)
+        val speakersJson: String? = sharedPreferences.getString(SPEAKERS_PREF, "")
+        val type2: Type = object : TypeToken<ArrayList<String>>(){}.type
+        speakersList = gson2.fromJson(speakersJson, type2)
     }//loadData method
 
     //method to populate the lists

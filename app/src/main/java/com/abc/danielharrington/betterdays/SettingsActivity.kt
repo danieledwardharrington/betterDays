@@ -40,14 +40,22 @@ class SettingsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.nav_quotes -> supportFragmentManager.beginTransaction().replace(R.id.fragment_container, quotesFragment!!).commit()
-            R.id.nav_about -> supportFragmentManager.beginTransaction().replace(R.id.fragment_container, aboutFragment!!).commit()
+            R.id.nav_quotes -> {
+                val intent = Intent(this, SettingsActivity::class.java)
+                intent.putExtra("FromQuotes", "quotesFragment")
+                startActivity(intent)
+            }//quotes
+            R.id.nav_about -> {
+                val intent = Intent(this, SettingsActivity::class.java)
+                intent.putExtra("FromAbout", "aboutFragment")
+                startActivity(intent)
+            }//about
             R.id.nav_settings -> supportFragmentManager.beginTransaction().replace(R.id.fragment_container, SettingsFragment()).commit()
             R.id.nav_share -> {
                 val shareIntent = Intent(Intent.ACTION_SEND)
                 shareIntent.type = "text/plain"
-                var shareBody = "The body text for sharing the app"
-                var shareSubject = "The subject"
+                val shareBody = "Better Days: A Wellness Companion App"
+                val shareSubject = "Check out this app!"
                 shareIntent.putExtra(Intent.EXTRA_SUBJECT, shareSubject)
                 shareIntent.putExtra(Intent.EXTRA_TEXT, shareBody)
                 startActivity(Intent.createChooser(shareIntent, "Share using"))

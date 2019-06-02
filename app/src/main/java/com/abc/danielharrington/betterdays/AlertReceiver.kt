@@ -47,10 +47,10 @@ class AlertReceiver : BroadcastReceiver() {
         speakerTextView?.text = speakersList[index]
 
 
-        var intent: Intent = Intent(theContext!!, MainActivity::class.java)
+        val intent: Intent = Intent(theContext!!, MainActivity::class.java)
         intent.putExtra("From", "quotesFragment")
 
-        var pendingIntent: PendingIntent = PendingIntent.getActivity(theContext, 100, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        val pendingIntent: PendingIntent = PendingIntent.getActivity(theContext, 100, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 
         val notification = NotificationCompat.Builder(theContext!!, CHANNEL_1_ID)
                 .setSmallIcon(R.drawable.ic_quotes)

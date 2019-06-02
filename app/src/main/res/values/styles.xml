@@ -12,6 +12,10 @@
         <item name="android:listDivider">@color/orangeRed</item>
         <item name="android:dividerHeight">1dp</item>
         <item name="textColorAlertDialogListItem">@color/titleTextColor</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -20,6 +24,10 @@
         <item name="android:listDivider">@color/orangeRed</item>
         <item name="android:dividerHeight">1dp</item>
         <item name="textColorAlertDialogListItem">@color/titleTextColor</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
     </style>
 
     <style name="AlertDialogStyle" parent="AlertDialog.AppCompat">

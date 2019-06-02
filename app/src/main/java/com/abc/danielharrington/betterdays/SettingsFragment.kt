@@ -62,14 +62,12 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
     //method to save preferences when the user clicks "SAVE"
     private fun saveData() {
-        //clearing any previously saved alarms to prevent tons of extra
-        //clearAlarms()
 
-        var gson: Gson = Gson()
-        var quotesJson: String = gson.toJson(quotesList)
+        val gson = Gson()
+        val quotesJson: String = gson.toJson(quotesList)
 
-        var gson2: Gson = Gson()
-        var speakersJson: String = gson2.toJson(speakersList)
+        val gson2 = Gson()
+        val speakersJson: String = gson2.toJson(speakersList)
 
         if (NOTIFICATIONS_PER_DAY > 0) {
             setAlarms()
@@ -94,6 +92,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
     private fun setAlarms() {
         //clearing any previously saved alarms to prevent tons of extra
         clearAlarms()
+        calList.clear()
 
         val rand = Random()
         var hour: Int
