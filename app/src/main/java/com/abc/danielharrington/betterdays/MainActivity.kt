@@ -107,12 +107,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     }//onCreate method
 
-    //overriding so I can set alarms again when the app is killed
-    override fun onDestroy() {
-        super.onDestroy()
-        setAlarms()
-    }//onDestroy
-
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.nav_quotes -> supportFragmentManager.beginTransaction().replace(R.id.fragment_container, quotesFragment!!).commit()
@@ -206,59 +200,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private fun createToast(message: String){
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }//createToast method
-
-    //these methods are copies of those found in the settings fragment, this is so
-    //they could be called in onDestroy to so notifications get fired when app is
-    //force closed
-
-    //method to set repeating notification alarms (random times)
-    private fun setAlarms() {
-        //clearing any previously saved alarms to prevent tons of extra
-        clearAlarms()
-        SettingsFragment.calList.clear()
-
-        val rand = Random()
-        var hour: Int
-        var minute: Int
-
-        for (i in 0 until (SettingsFragment.NOTIFICATIONS_PER_DAY)) {
-            hour = rand.nextInt(25)
-            minute = rand.nextInt(61)
-            val cal = Calendar.getInstance()
-            cal.set(Calendar.HOUR_OF_DAY, hour)
-            cal.set(Calendar.MINUTE, minute)
-            cal.set(Calendar.SECOND, 0)
-
-            SettingsFragment.calList.add(cal)
-        }//for
-
-        var i = 0
-        for (cal in SettingsFragment.calList) {
-            val alarmManager = this.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-            val intent = Intent(this, AlertReceiver::class.java)
-            val pendingIntent = PendingIntent.getBroadcast(this, 1, intent, i)
-
-            alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, cal.timeInMillis, AlarmManager.INTERVAL_DAY, pendingIntent)
-            println(i)
-            i++
-        }//for
-
-    }//setAlarms method
-
-    //method to clear the alarms
-    private fun clearAlarms() {
-
-        var i = 0
-        for (cal in SettingsFragment.calList) {
-            val alarmManager = this.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-            val intent = Intent(this, AlertReceiver::class.java)
-            val pendingIntent = PendingIntent.getBroadcast(this, 1, intent, i)
-
-            alarmManager.cancel(pendingIntent)
-            i++
-        }//for
-
-    }//clearAlarms method
 
 
 }//MainActivity class
