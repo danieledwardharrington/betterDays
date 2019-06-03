@@ -59,39 +59,4 @@ class QuotesFragment : Fragment() {
         return rootView
     }//onCreateView method
 
-    /*
-    fun updateTheme(theme: String?) {
-                when (QUOTES_THEME){
-            "Forest" ->{
-                rootView.setBackgroundResource(R.drawable.img_forest)
-            }//forest
-            "Beach" ->{
-                rootView.setBackgroundResource(R.drawable.img_beach)
-            }//beach
-            "Space" ->{
-                rootView.setBackgroundResource(R.drawable.img_space)
-            }//space
-            "Mountain" ->{
-                rootView.setBackgroundResource(R.drawable.img_mountain)
-            }//mountain
-            "Default" ->{
-                rootView.setBackgroundResource(R.color.signBlue)
-            }//default
-            else ->{
-                rootView.setBackgroundResource(R.color.signBlue)
-            }//else
-
-        }//when
-    }//updateTheme
-
-
-    //method to load the saved data
-    fun loadData() {
-        val context = context
-
-        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
-        QUOTES_THEME = sharedPreferences.getString(SettingsFragment.THEME_PREF, "Beach")
-    }//loadData method
-    */
-
 }//QuotesFragment class

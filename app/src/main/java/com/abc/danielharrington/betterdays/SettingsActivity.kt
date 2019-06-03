@@ -39,6 +39,8 @@ class SettingsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
     }//onCreate method
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        //sending them back to the main activity so the bg updates without
+        //having to kill the app and open it again
         when (item.itemId) {
             R.id.nav_quotes -> {
                 val intent = Intent(this, MainActivity::class.java)

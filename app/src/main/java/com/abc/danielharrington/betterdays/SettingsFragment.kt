@@ -1,4 +1,9 @@
 package com.abc.danielharrington.betterdays
+/*
+A good deal of the heavy lifting is being done in this fragment
+alongside the main activity.
+ */
+
 
 import android.app.AlarmManager
 import android.app.PendingIntent
@@ -27,9 +32,9 @@ class SettingsFragment : PreferenceFragmentCompat() {
     private var notificationsPreference: ListPreference? = null
     private var savePreference: Preference? = null
 
-    private var NOTIFICATIONS_PER_DAY: Int = 0
+    //private var NOTIFICATIONS_PER_DAY: Int = 0
 
-    private var calList: ArrayList<Calendar> = ArrayList()
+    //private var calList: ArrayList<Calendar> = ArrayList()
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences, rootKey)
@@ -62,12 +67,6 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
     //method to save preferences when the user clicks "SAVE"
     private fun saveData() {
-
-        /*val gson = Gson()
-        val quotesJson: String = gson.toJson(quotesList)
-
-        val gson2 = Gson()
-        val speakersJson: String = gson2.toJson(speakersList)*/
 
         if (NOTIFICATIONS_PER_DAY > 0) {
             setAlarms()
@@ -151,5 +150,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
         const val QUOTES_PREF = "quotesListPreference"
         const val SPEAKERS_PREF = "speakersListPreference"
         var THEME_SELECTED: String? = null
+        var NOTIFICATIONS_PER_DAY: Int = 0
+        var calList: ArrayList<Calendar> = ArrayList()
     }//companion object
 }//SettingsFragment class

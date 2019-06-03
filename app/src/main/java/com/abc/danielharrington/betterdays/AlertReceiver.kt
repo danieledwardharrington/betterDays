@@ -1,5 +1,11 @@
 package com.abc.danielharrington.betterdays
 
+/*
+Two channel notifications are implemented here but I'm currently
+only using one. I might use channel 2 at some point in the future
+if I add additional functionality. Good to have it here.
+ */
+
 import android.app.Notification
 import android.app.PendingIntent
 import android.content.BroadcastReceiver
@@ -33,8 +39,8 @@ class AlertReceiver : BroadcastReceiver() {
     }//onReceive method
 
     fun sendOnChannel1() {
-        val title = "Better Days"
-        val message = "New Quote Available"
+        val title = "New Quote Available"
+        val message = "Come check it out!"
 
         var index: Int = 0
         if(quotesList.size != 0) {

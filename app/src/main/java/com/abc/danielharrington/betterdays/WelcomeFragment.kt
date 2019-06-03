@@ -1,5 +1,9 @@
 package com.abc.danielharrington.betterdays
 
+/*
+Just an opening "splash" page. Simple.
+ */
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View

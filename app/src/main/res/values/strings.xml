@@ -8,7 +8,7 @@
     <string name="per_day_default">0</string>
 
     <string name="themes_string">Background Theme</string>
-    <string name="themes_summary">Background theme (Restart after saving to see changes)</string>
+    <string name="themes_summary">Choose the background for your quotes</string>
     <string name="themes_default_value">Default</string>
 
     <string-array name="quotes_per_day_numbers">
@@ -19,6 +19,8 @@
         <item>4</item>
         <item>5</item>
         <item>6</item>
+        <item>7</item>
+        <item>8</item>
     </string-array>
 
     <string-array name="bg_themes">
