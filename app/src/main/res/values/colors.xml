@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="midnightBlue">#364A61</color>
-    <color name="signBlue">#252850</color>
+    <color name="signBlue">#2C2C3D</color>
     <color name="black">#000000</color>
     <color name="colorAccent">#D81B60</color>
     <color name="titleTextColor">#FFFFFF</color>
