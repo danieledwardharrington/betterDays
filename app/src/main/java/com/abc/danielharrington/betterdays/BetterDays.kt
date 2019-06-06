@@ -23,11 +23,11 @@ class BetterDays : Application() {
 /*            val channel2 = NotificationChannel(CHANNEL_2_ID, "New Quote!", NotificationManager.IMPORTANCE_DEFAULT)
             channel2.enableLights(true)
             channel2.enableVibration(true)
-            channel2.description = "New quotes notification"
+            channel2.description = "New quotes notification" */
 
             val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             manager.createNotificationChannel(channel1)
-            manager.createNotificationChannel(channel2)*/
+            //manager.createNotificationChannel(channel2)
         }
 
     }//createNotificationChannels method
