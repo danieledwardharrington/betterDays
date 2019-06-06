@@ -78,8 +78,6 @@ class SettingsFragment : PreferenceFragmentCompat() {
         val editor = sharedPreferences.edit()
 
         editor.putString(THEME_PREF, THEME_SELECTED)
-        //editor.putString(QUOTES_PREF, quotesJson)
-        //editor.putString(SPEAKERS_PREF, speakersJson)
         editor.putInt(NOTS_PREF, NOTIFICATIONS_PER_DAY)
 
         editor.apply()
@@ -93,13 +91,16 @@ class SettingsFragment : PreferenceFragmentCompat() {
         clearAlarms()
         calList.clear()
 
-        val rand = Random()
+
         var hour: Int
         var minute: Int
 
         for (i in 0 until (NOTIFICATIONS_PER_DAY)) {
-            hour = rand.nextInt(25)
-            minute = rand.nextInt(61)
+            val hourRand = (0..23).random()
+            val minuteRand = (0..59).random()
+
+            hour = hourRand
+            minute = minuteRand
             val cal = Calendar.getInstance()
             cal.set(Calendar.HOUR_OF_DAY, hour)
             cal.set(Calendar.MINUTE, minute)

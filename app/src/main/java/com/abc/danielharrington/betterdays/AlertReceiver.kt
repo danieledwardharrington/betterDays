@@ -23,6 +23,8 @@ import com.abc.danielharrington.betterdays.QuotesFragment.Companion.quoteText
 import com.abc.danielharrington.betterdays.QuotesFragment.Companion.quoteTextView
 import com.abc.danielharrington.betterdays.QuotesFragment.Companion.speakerText
 import com.abc.danielharrington.betterdays.QuotesFragment.Companion.speakerTextView
+import java.text.SimpleDateFormat
+import java.util.*
 import kotlin.random.Random
 
 
@@ -38,7 +40,7 @@ class AlertReceiver : BroadcastReceiver() {
         sendOnChannel1()
     }//onReceive method
 
-    fun sendOnChannel1() {
+    private fun sendOnChannel1() {
         val title = "New Quote Available"
         val message = "Come check it out!"
 
@@ -53,10 +55,10 @@ class AlertReceiver : BroadcastReceiver() {
         speakerTextView?.text = speakersList[index]
 
 
-        val intent: Intent = Intent(theContext!!, MainActivity::class.java)
+        val intent = Intent(theContext!!, MainActivity::class.java)
         intent.putExtra("From", "quotesFragment")
 
-        val pendingIntent: PendingIntent = PendingIntent.getActivity(theContext, 100, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        val pendingIntent: PendingIntent = PendingIntent.getActivity(theContext, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 
         val notification = NotificationCompat.Builder(theContext!!, CHANNEL_1_ID)
                 .setSmallIcon(R.drawable.ic_quotes)
@@ -68,7 +70,9 @@ class AlertReceiver : BroadcastReceiver() {
                 .setContentIntent(pendingIntent)
                 .build()
 
-        notificationManager!!.notify(1, notification)
+        val id = createID()
+
+        notificationManager!!.notify(id, notification)
 
     }//sendOnChannel1 method
 
@@ -87,4 +91,11 @@ class AlertReceiver : BroadcastReceiver() {
         notificationManager!!.notify(2, notification)
 
     }//sendOnChannel2 method
+
+    //method to generate a unique ID
+    private fun createID(): Int{
+        val now = Date()
+        val id = Integer.parseInt(SimpleDateFormat("ddHHmmss", Locale.US).format(now))
+        return id
+    }//createID method
 }//AlertReceiver method
