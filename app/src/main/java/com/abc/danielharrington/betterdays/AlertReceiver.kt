@@ -76,9 +76,10 @@ class AlertReceiver : BroadcastReceiver() {
 
     }//sendOnChannel1 method
 
+    //for future functionality
     fun sendOnChannel2() {
-        val title = "Better Days"
-        val message = "New Quote Available"
+        val title = "Title"
+        val message = "Message"
 
         val notification = NotificationCompat.Builder(theContext!!, CHANNEL_2_ID)
                 .setSmallIcon(R.drawable.ic_quotes)
