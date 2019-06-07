@@ -97,4 +97,4 @@ class AlertReceiver : BroadcastReceiver() {
         val id = Integer.parseInt(SimpleDateFormat("ddHHmmss", Locale.US).format(now))
         return id
     }//createID method
-}//AlertReceiver method
+}//AlertReceiver class
