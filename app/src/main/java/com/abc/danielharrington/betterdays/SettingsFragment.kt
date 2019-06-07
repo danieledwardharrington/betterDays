@@ -113,7 +113,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
         for (cal in calList) {
             val alarmManager = context!!.getSystemService(Context.ALARM_SERVICE) as AlarmManager
             val intent = Intent(context, AlertReceiver::class.java)
-            val pendingIntent = PendingIntent.getBroadcast(context, 1, intent, i)
+            val pendingIntent = PendingIntent.getBroadcast(context, i, intent, 0)
 
             alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, cal.timeInMillis, AlarmManager.INTERVAL_DAY, pendingIntent)
             println(i)
@@ -129,7 +129,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
         for (cal in calList) {
             val alarmManager = context!!.getSystemService(Context.ALARM_SERVICE) as AlarmManager
             val intent = Intent(context, AlertReceiver::class.java)
-            val pendingIntent = PendingIntent.getBroadcast(context, 1, intent, i)
+            val pendingIntent = PendingIntent.getBroadcast(context, i, intent, 0)
 
             alarmManager.cancel(pendingIntent)
             i++

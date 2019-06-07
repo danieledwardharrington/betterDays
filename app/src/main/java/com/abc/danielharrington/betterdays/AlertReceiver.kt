@@ -11,12 +11,10 @@ import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-
 import com.abc.danielharrington.betterdays.BetterDays.Companion.CHANNEL_1_ID
-import com.abc.danielharrington.betterdays.BetterDays.Companion.CHANNEL_2_ID
+//import com.abc.danielharrington.betterdays.BetterDays.Companion.CHANNEL_2_ID
 import com.abc.danielharrington.betterdays.MainActivity.Companion.quotesList
 import com.abc.danielharrington.betterdays.MainActivity.Companion.speakersList
 import com.abc.danielharrington.betterdays.QuotesFragment.Companion.quoteText
@@ -76,7 +74,7 @@ class AlertReceiver : BroadcastReceiver() {
 
     }//sendOnChannel1 method
 
-    //for future functionality
+/*    //for future functionality
     fun sendOnChannel2() {
         val title = "Title"
         val message = "Message"
@@ -91,7 +89,7 @@ class AlertReceiver : BroadcastReceiver() {
 
         notificationManager!!.notify(2, notification)
 
-    }//sendOnChannel2 method
+    }//sendOnChannel2 method*/
 
     //method to generate a unique ID
     private fun createID(): Int{
