@@ -15,15 +15,9 @@ import android.widget.Toast
 import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
-
 import java.util.ArrayList
 import java.util.Calendar
-import java.util.Random
-
 import android.content.Context.MODE_PRIVATE
-import com.abc.danielharrington.betterdays.MainActivity.Companion.quotesList
-import com.abc.danielharrington.betterdays.MainActivity.Companion.speakersList
-import com.google.gson.Gson
 
 
 class SettingsFragment : PreferenceFragmentCompat() {
@@ -31,6 +25,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
     private var themePreference: ListPreference? = null
     private var notificationsPreference: ListPreference? = null
     private var savePreference: Preference? = null
+    val ctx: Context = MainActivity.getApplicationContext()
 
     //private var NOTIFICATIONS_PER_DAY: Int = 0
 
@@ -86,39 +81,39 @@ class SettingsFragment : PreferenceFragmentCompat() {
     }//saveData method
 
     //method to set repeating notification alarms (random times)
-    private fun setAlarms() {
-        //clearing any previously saved alarms to prevent tons of extra
-        clearAlarms()
-        calList.clear()
+        private fun setAlarms() {
+            //clearing any previously saved alarms to prevent tons of extra
+            clearAlarms()
+            calList.clear()
 
 
-        var hour: Int
-        var minute: Int
+            var hour: Int
+            var minute: Int
 
-        for (i in 0 until (NOTIFICATIONS_PER_DAY)) {
-            val hourRand = (0..23).random()
-            val minuteRand = (0..59).random()
+            for (i in 0 until (NOTIFICATIONS_PER_DAY)) {
+                val hourRand = (0..23).random()
+                val minuteRand = (0..59).random()
 
-            hour = hourRand
-            minute = minuteRand
-            val cal = Calendar.getInstance()
-            cal.set(Calendar.HOUR_OF_DAY, hour)
-            cal.set(Calendar.MINUTE, minute)
-            cal.set(Calendar.SECOND, 0)
+                hour = hourRand
+                minute = minuteRand
+                val cal = Calendar.getInstance()
+                cal.set(Calendar.HOUR_OF_DAY, hour)
+                cal.set(Calendar.MINUTE, minute)
+                cal.set(Calendar.SECOND, 0)
 
-            calList.add(cal)
-        }//for
+                calList.add(cal)
+            }//for
 
-        var i = 0
-        for (cal in calList) {
-            val alarmManager = context!!.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-            val intent = Intent(context, AlertReceiver::class.java)
-            val pendingIntent = PendingIntent.getBroadcast(context, i, intent, 0)
+            var i = 0
+            for (cal in calList) {
+                val alarmManager = ctx.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+                val intent = Intent(ctx, AlertReceiver::class.java)
+                val pendingIntent = PendingIntent.getBroadcast(ctx, i, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 
-            alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, cal.timeInMillis, AlarmManager.INTERVAL_DAY, pendingIntent)
-            println(i)
-            i++
-        }//for
+                alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, cal.timeInMillis, AlarmManager.INTERVAL_DAY, pendingIntent)
+                println(i)
+                i++
+            }//for
 
     }//setAlarms method
 
@@ -127,9 +122,9 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
         var i = 0
         for (cal in calList) {
-            val alarmManager = context!!.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-            val intent = Intent(context, AlertReceiver::class.java)
-            val pendingIntent = PendingIntent.getBroadcast(context, i, intent, 0)
+            val alarmManager = ctx.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+            val intent = Intent(ctx, AlertReceiver::class.java)
+            val pendingIntent = PendingIntent.getBroadcast(ctx, i, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 
             alarmManager.cancel(pendingIntent)
             i++

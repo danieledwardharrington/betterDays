@@ -18,4 +18,4 @@ class AboutFragment : Fragment() {
     }//onCreateView method
 
 
-}//AboutFragmnet class
+}//AboutFragment class

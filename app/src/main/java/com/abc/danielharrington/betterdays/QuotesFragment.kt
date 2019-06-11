@@ -23,7 +23,7 @@ class QuotesFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         //loadData()
 
-        var rootView = inflater.inflate(R.layout.quotes_fragment, container, false)
+        val rootView = inflater.inflate(R.layout.quotes_fragment, container, false)
 
         activity!!.title = "Quotes"
 

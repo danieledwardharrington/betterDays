@@ -12,8 +12,6 @@ other forms of therapy and treatments (as well as other apps).
 Last Edited: June 3, 2019
  */
 
-import android.app.AlarmManager
-import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import com.google.android.material.navigation.NavigationView
@@ -34,7 +32,6 @@ import com.abc.danielharrington.betterdays.SettingsFragment.Companion.SPEAKERS_P
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.lang.reflect.Type
-import java.util.*
 import kotlin.collections.ArrayList
 
 
@@ -46,11 +43,21 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private var settingsFragment: SettingsFragment? = null
     private var welcomeFragment: WelcomeFragment? = null
 
+    init {
+        instance = this
+    }
+
     companion object{
         var quotesList: ArrayList<String> = ArrayList()
         var speakersList: ArrayList<String> = ArrayList()
         var appNotifications: Int = 0
-    }
+
+        private var instance: MainActivity? = null
+
+        fun getApplicationContext(): Context{
+            return instance!!.applicationContext
+        }
+    }//companion
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
