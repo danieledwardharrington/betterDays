@@ -63,8 +63,7 @@ class AlertReceiver : BroadcastReceiver() {
                 .setContentTitle(title)
                 .setContentText(message)
                 .setAutoCancel(true)
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setContentIntent(pendingIntent)
                 .build()
 
