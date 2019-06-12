@@ -1,5 +1,9 @@
 package com.abc.danielharrington.betterdays
 
+/*
+Setting up notification channels here
+ */
+
 import android.app.Application
 import android.app.NotificationChannel
 import android.app.NotificationManager

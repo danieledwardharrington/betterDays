@@ -3,13 +3,13 @@ package com.abc.danielharrington.betterdays
 /*
 Author: Daniel Harrington
 
-Purpose: Simple app that sets random notifications (up to 6) per
+Purpose: Simple app that sets random notifications (up to 8) per
 day and generates a random inspirational quote (taken from a txt file).
 Intended to be a lightweight, simple, approachable mental health app
 geared toward improving day to day well-being and being a companion to
 other forms of therapy and treatments (as well as other apps).
 
-Last Edited: June 3, 2019
+Last Edited: June 12, 2019
  */
 
 import android.content.Context
@@ -24,11 +24,15 @@ import androidx.appcompat.widget.Toolbar
 import android.view.MenuItem
 import android.widget.Toast
 import com.abc.danielharrington.betterdays.QuotesFragment.Companion.QUOTES_THEME
+import com.abc.danielharrington.betterdays.QuotesFragment.Companion.quoteText
+import com.abc.danielharrington.betterdays.QuotesFragment.Companion.speakerText
 import com.abc.danielharrington.betterdays.SettingsFragment.Companion.NOTS_PREF
 import com.abc.danielharrington.betterdays.SettingsFragment.Companion.QUOTES_PREF
+import com.abc.danielharrington.betterdays.SettingsFragment.Companion.QUOTES_SAVED_TEXT
 import com.abc.danielharrington.betterdays.SettingsFragment.Companion.THEME_PREF
 import com.abc.danielharrington.betterdays.SettingsFragment.Companion.SHARED_PREFS
 import com.abc.danielharrington.betterdays.SettingsFragment.Companion.SPEAKERS_PREF
+import com.abc.danielharrington.betterdays.SettingsFragment.Companion.SPEAKER_SAVED_TEXT
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.lang.reflect.Type
@@ -162,6 +166,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val speakersJson: String? = sharedPreferences.getString(SPEAKERS_PREF, "")
         val type2: Type = object : TypeToken<ArrayList<String>>(){}.type
         speakersList = gson2.fromJson(speakersJson, type2)
+
+        quoteText = sharedPreferences.getString(QUOTES_SAVED_TEXT, "")
+        speakerText = sharedPreferences.getString(SPEAKER_SAVED_TEXT, "")
     }//loadData method
 
     //method to populate the lists

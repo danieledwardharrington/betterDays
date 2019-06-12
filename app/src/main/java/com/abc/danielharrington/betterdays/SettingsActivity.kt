@@ -1,5 +1,9 @@
 package com.abc.danielharrington.betterdays
 
+/*
+Settings activity, throws the user back to MainActivity if they choose Quotes or About from nav
+ */
+
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem

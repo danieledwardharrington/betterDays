@@ -1,5 +1,10 @@
 package com.abc.danielharrington.betterdays
 
+/*
+Quick little thank you for the download and a bit about my personal
+interest in mental health and motivations around this app
+ */
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater

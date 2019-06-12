@@ -145,6 +145,8 @@ class SettingsFragment : PreferenceFragmentCompat() {
         const val NOTS_PREF = "notificationsPreference"
         const val QUOTES_PREF = "quotesListPreference"
         const val SPEAKERS_PREF = "speakersListPreference"
+        var QUOTES_SAVED_TEXT: String? = null
+        var SPEAKER_SAVED_TEXT: String? = null
         var THEME_SELECTED: String? = null
         var NOTIFICATIONS_PER_DAY: Int = 0
         var calList: ArrayList<Calendar> = ArrayList()

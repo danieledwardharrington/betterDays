@@ -11,15 +11,20 @@ import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.abc.danielharrington.betterdays.BetterDays.Companion.CHANNEL_1_ID
+import com.abc.danielharrington.betterdays.MainActivity.Companion.getApplicationContext
 import com.abc.danielharrington.betterdays.MainActivity.Companion.quotesList
 import com.abc.danielharrington.betterdays.MainActivity.Companion.speakersList
 import com.abc.danielharrington.betterdays.QuotesFragment.Companion.quoteText
 import com.abc.danielharrington.betterdays.QuotesFragment.Companion.quoteTextView
 import com.abc.danielharrington.betterdays.QuotesFragment.Companion.speakerText
 import com.abc.danielharrington.betterdays.QuotesFragment.Companion.speakerTextView
+import com.abc.danielharrington.betterdays.SettingsFragment.Companion.QUOTES_SAVED_TEXT
+import com.abc.danielharrington.betterdays.SettingsFragment.Companion.SHARED_PREFS
+import com.abc.danielharrington.betterdays.SettingsFragment.Companion.SPEAKER_SAVED_TEXT
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.random.Random
@@ -33,10 +38,13 @@ class AlertReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
 
         //notificationManager = NotificationManagerCompat.from(context)
-        //sendOnChannel1()
         this.ctx = context
+        //sendOnChannel1()
 
         MyJobIntentService.enqueueWork(context, intent)
+        //this.ctx = context
+        notificationManager = NotificationManagerCompat.from(context)
+        sendOnChannel1()
     }//onReceive method
 
     private fun sendOnChannel1() {
@@ -52,6 +60,12 @@ class AlertReceiver : BroadcastReceiver() {
 
         quoteTextView?.text = quotesList[index]
         speakerTextView?.text = speakersList[index]
+
+        val sharedPreferences = getApplicationContext().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putString(QUOTES_SAVED_TEXT, quoteText)
+        editor.putString(SPEAKER_SAVED_TEXT, speakerText)
+        editor.apply()
 
 
         val intent = Intent(ctx, MainActivity::class.java)

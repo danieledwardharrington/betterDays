@@ -1,7 +1,7 @@
 package com.abc.danielharrington.betterdays
 
 /*
-Just an opening "splash" page. Simple.
+Just an opening "splash" page. Simple. Will not be able to return here from nav
  */
 
 import android.os.Bundle

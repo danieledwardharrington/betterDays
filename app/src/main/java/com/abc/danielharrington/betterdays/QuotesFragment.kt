@@ -1,5 +1,9 @@
 package com.abc.danielharrington.betterdays
 
+/*
+ragment that reflects the theme choice and the quote w/ speaker
+ */
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
