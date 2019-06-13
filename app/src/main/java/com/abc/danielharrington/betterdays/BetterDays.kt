@@ -14,7 +14,7 @@ class BetterDays : Application() {
     }
 
     private fun createNotificationChannels() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        if (Build.VERSION.SDK_INT >= 26) {
             val channel1 = NotificationChannel(CHANNEL_1_ID, "Quote Channel", NotificationManager.IMPORTANCE_DEFAULT).apply { description = "New quotes notification" }
             channel1.enableLights(true)
             channel1.enableVibration(true)
