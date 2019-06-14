@@ -113,6 +113,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
         for (cal in calList) {
             val alarmManager = context!!.getSystemService(Context.ALARM_SERVICE) as AlarmManager
             val intent = Intent(context, AlertReceiver::class.java)
+            intent.setClass(context!!, AlertReceiver::class.java)
             val pendingIntent = PendingIntent.getBroadcast(context, i, intent, 0)
 
             alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, cal.timeInMillis, AlarmManager.INTERVAL_DAY, pendingIntent)
@@ -150,6 +151,8 @@ class SettingsFragment : PreferenceFragmentCompat() {
         const val NOTS_PREF = "notificationsPreference"
         const val QUOTES_PREF = "quotesListPreference"
         const val SPEAKERS_PREF = "speakersListPreference"
+        const val SAVED_QUOTE = "savedQuote"
+        const val SAVED_SPEAKER = "savedSpeaker"
         var THEME_SELECTED: String? = null
         var NOTIFICATIONS_PER_DAY: Int = 0
         var calList: ArrayList<Calendar> = ArrayList()

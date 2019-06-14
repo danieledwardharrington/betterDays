@@ -26,8 +26,12 @@ import androidx.appcompat.widget.Toolbar
 import android.view.MenuItem
 import android.widget.Toast
 import com.abc.danielharrington.betterdays.QuotesFragment.Companion.QUOTES_THEME
+import com.abc.danielharrington.betterdays.QuotesFragment.Companion.quoteText
+import com.abc.danielharrington.betterdays.QuotesFragment.Companion.speakerText
 import com.abc.danielharrington.betterdays.SettingsFragment.Companion.NOTS_PREF
 import com.abc.danielharrington.betterdays.SettingsFragment.Companion.QUOTES_PREF
+import com.abc.danielharrington.betterdays.SettingsFragment.Companion.SAVED_QUOTE
+import com.abc.danielharrington.betterdays.SettingsFragment.Companion.SAVED_SPEAKER
 import com.abc.danielharrington.betterdays.SettingsFragment.Companion.THEME_PREF
 import com.abc.danielharrington.betterdays.SettingsFragment.Companion.SHARED_PREFS
 import com.abc.danielharrington.betterdays.SettingsFragment.Companion.SPEAKERS_PREF
@@ -155,6 +159,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val speakersJson: String? = sharedPreferences.getString(SPEAKERS_PREF, "")
         val type2: Type = object : TypeToken<ArrayList<String>>(){}.type
         speakersList = gson2.fromJson(speakersJson, type2)
+
+        quoteText = sharedPreferences.getString(SAVED_QUOTE, "")
+        speakerText = sharedPreferences.getString(SAVED_SPEAKER, "")
     }//loadData method
 
     //method to populate the lists

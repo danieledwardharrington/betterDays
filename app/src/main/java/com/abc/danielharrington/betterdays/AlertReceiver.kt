@@ -21,6 +21,9 @@ import com.abc.danielharrington.betterdays.QuotesFragment.Companion.quoteText
 import com.abc.danielharrington.betterdays.QuotesFragment.Companion.quoteTextView
 import com.abc.danielharrington.betterdays.QuotesFragment.Companion.speakerText
 import com.abc.danielharrington.betterdays.QuotesFragment.Companion.speakerTextView
+import com.abc.danielharrington.betterdays.SettingsFragment.Companion.SAVED_QUOTE
+import com.abc.danielharrington.betterdays.SettingsFragment.Companion.SAVED_SPEAKER
+import com.abc.danielharrington.betterdays.SettingsFragment.Companion.SHARED_PREFS
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.random.Random
@@ -51,6 +54,14 @@ class AlertReceiver : BroadcastReceiver() {
 
         quoteTextView?.text = quotesList[index]
         speakerTextView?.text = speakersList[index]
+
+        val sharedPreferences = theContext!!.getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+
+        editor.putString(SAVED_QUOTE, quoteText)
+        editor.putString(SAVED_SPEAKER, speakerText)
+
+        editor.apply()
 
 
         val intent = Intent(theContext!!, MainActivity::class.java)
