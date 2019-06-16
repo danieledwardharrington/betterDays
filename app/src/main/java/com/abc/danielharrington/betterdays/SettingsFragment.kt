@@ -21,9 +21,13 @@ import java.util.Calendar
 import java.util.Random
 
 import android.content.Context.MODE_PRIVATE
+import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.PeriodicWorkRequest
+import androidx.work.WorkManager
 import com.abc.danielharrington.betterdays.MainActivity.Companion.quotesList
 import com.abc.danielharrington.betterdays.MainActivity.Companion.speakersList
 import com.google.gson.Gson
+import java.util.concurrent.TimeUnit
 
 
 class SettingsFragment : PreferenceFragmentCompat() {
@@ -69,9 +73,9 @@ class SettingsFragment : PreferenceFragmentCompat() {
     private fun saveData() {
 
         if (NOTIFICATIONS_PER_DAY > 0) {
-            setAlarms()
+            startWork() //starting periodic WorkManager
         } else {
-            clearAlarms() //clearing if the user is removing notifications
+            cancelWork() //cancelling the work if the user doesn't want notifications anymore
         }
 
         val sharedPreferences = activity!!.getSharedPreferences(SHARED_PREFS, MODE_PRIVATE)
@@ -85,58 +89,34 @@ class SettingsFragment : PreferenceFragmentCompat() {
         Toast.makeText(context, "Settings saved", Toast.LENGTH_SHORT).show()
     }//saveData method
 
-    //method to set repeating notification alarms (random times)
-    private fun setAlarms() {
-        //clearing any previously saved alarms to prevent tons of extra
-        clearAlarms()
-        calList.clear()
+    private fun startWork(){
+        //cancel any work that already exists
+        cancelWork()
 
+        var delayTime: Long
 
-        var hour: Int
-        var minute: Int
+        for(i in 0 until NOTIFICATIONS_PER_DAY){
+            delayTime = (0..23).random().toLong()
 
-        for (i in 0 until (NOTIFICATIONS_PER_DAY)) {
-            val hourRand = (0..23).random()
-            val minuteRand = (0..59).random()
+            val task = PeriodicWorkRequest.Builder(
+                   NotificationWorker::class.java,
+                    1,
+                    TimeUnit.DAYS,
+                    45,
+                    TimeUnit.MINUTES)
+                    .addTag("periodic_quote_not")
+                    .setInitialDelay(delayTime, TimeUnit.HOURS)
+                    .build()
 
-            hour = hourRand
-            minute = minuteRand
-            val cal = Calendar.getInstance()
-            cal.set(Calendar.HOUR_OF_DAY, hour)
-            cal.set(Calendar.MINUTE, minute)
-            cal.set(Calendar.SECOND, 0)
+            WorkManager.getInstance(context!!).enqueueUniquePeriodicWork("periodic_quote_not", ExistingPeriodicWorkPolicy.REPLACE, task)
 
-            calList.add(cal)
         }//for
 
-        var i = 0
-        for (cal in calList) {
-            val alarmManager = context!!.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-            val intent = Intent(context, AlertReceiver::class.java)
-            intent.setClass(context!!, AlertReceiver::class.java)
-            val pendingIntent = PendingIntent.getBroadcast(context, i, intent, 0)
+    }//startWork method
 
-            alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, cal.timeInMillis, AlarmManager.INTERVAL_DAY, pendingIntent)
-            println(i)
-            i++
-        }//for
-
-    }//setAlarms method
-
-    //method to clear the alarms
-    private fun clearAlarms() {
-
-        var i = 0
-        for (cal in calList) {
-            val alarmManager = context!!.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-            val intent = Intent(context, AlertReceiver::class.java)
-            val pendingIntent = PendingIntent.getBroadcast(context, i, intent, 0)
-
-            alarmManager.cancel(pendingIntent)
-            i++
-        }//for
-
-    }//clearAlarms method
+    private fun cancelWork(){
+        WorkManager.getInstance(context!!).cancelAllWorkByTag("periodic_quote_not") //used one tag for all
+    }//cancelWork method
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
