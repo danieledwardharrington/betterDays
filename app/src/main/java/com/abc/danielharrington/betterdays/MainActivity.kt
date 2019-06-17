@@ -9,11 +9,9 @@ Intended to be a lightweight, simple, approachable mental health app
 geared toward improving day to day well-being and being a companion to
 other forms of therapy and treatments (as well as other apps).
 
-Last Edited: June 3, 2019
+Last Edited: June 16, 2019
  */
 
-import android.app.AlarmManager
-import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import com.google.android.material.navigation.NavigationView
@@ -38,7 +36,6 @@ import com.abc.danielharrington.betterdays.SettingsFragment.Companion.SPEAKERS_P
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.lang.reflect.Type
-import java.util.*
 import kotlin.collections.ArrayList
 
 

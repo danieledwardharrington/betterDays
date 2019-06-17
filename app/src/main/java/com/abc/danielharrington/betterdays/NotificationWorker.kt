@@ -1,4 +1,8 @@
 package com.abc.danielharrington.betterdays
+/*
+WorkManager to deal with periodic, daily notifications sent to the user
+ */
+
 
 import android.app.PendingIntent
 import android.content.Context
@@ -13,7 +17,7 @@ import kotlin.random.Random
 
 class NotificationWorker(appContext: Context, workerParams: WorkerParameters): Worker(appContext, workerParams) {
 
-    var notificationManager: NotificationManagerCompat? = null
+    private var notificationManager: NotificationManagerCompat? = null
 
     override fun doWork(): Result {
 

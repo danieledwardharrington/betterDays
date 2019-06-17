@@ -5,28 +5,18 @@ alongside the main activity.
  */
 
 
-import android.app.AlarmManager
-import android.app.PendingIntent
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
-
 import java.util.ArrayList
 import java.util.Calendar
-import java.util.Random
-
 import android.content.Context.MODE_PRIVATE
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequest
 import androidx.work.WorkManager
-import com.abc.danielharrington.betterdays.MainActivity.Companion.quotesList
-import com.abc.danielharrington.betterdays.MainActivity.Companion.speakersList
-import com.google.gson.Gson
 import java.util.concurrent.TimeUnit
 
 
@@ -76,7 +66,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
             startWork() //starting periodic WorkManager
         } else {
             cancelWork() //cancelling the work if the user doesn't want notifications anymore
-        }
+        }//if/else
 
         val sharedPreferences = activity!!.getSharedPreferences(SHARED_PREFS, MODE_PRIVATE)
         val editor = sharedPreferences.edit()
@@ -96,19 +86,19 @@ class SettingsFragment : PreferenceFragmentCompat() {
         var delayTime: Long
 
         for(i in 0 until NOTIFICATIONS_PER_DAY){
-            delayTime = (0..23).random().toLong()
+            delayTime = (0..23).random().toLong() //to mimic a "random" time, not taking minutes into account
 
             val task = PeriodicWorkRequest.Builder(
                    NotificationWorker::class.java,
                     1,
                     TimeUnit.DAYS,
-                    45,
+                    30,
                     TimeUnit.MINUTES)
                     .addTag("periodic_quote_not")
                     .setInitialDelay(delayTime, TimeUnit.HOURS)
                     .build()
-
-            WorkManager.getInstance(context!!).enqueueUniquePeriodicWork("periodic_quote_not", ExistingPeriodicWorkPolicy.REPLACE, task)
+            println("Delay time: $delayTime")
+            WorkManager.getInstance(context!!).enqueueUniquePeriodicWork("periodic_quote_work", ExistingPeriodicWorkPolicy.REPLACE, task)
 
         }//for
 
