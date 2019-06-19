@@ -25,6 +25,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
     private var themePreference: ListPreference? = null
     private var notificationsPreference: ListPreference? = null
     private var savePreference: Preference? = null
+    val WORK_TAG = "periodic_work_notification"
 
     //private var NOTIFICATIONS_PER_DAY: Int = 0
 
@@ -83,29 +84,33 @@ class SettingsFragment : PreferenceFragmentCompat() {
         //cancel any work that already exists
         cancelWork()
 
+
         var delayTime: Long
+        var workName: String = ""
 
         for(i in 0 until NOTIFICATIONS_PER_DAY){
             delayTime = (0..23).random().toLong() //to mimic a "random" time, not taking minutes into account
+
+            workName = "periodic_quote_work_$i" //using to make it unique
 
             val task = PeriodicWorkRequest.Builder(
                    NotificationWorker::class.java,
                     1,
                     TimeUnit.DAYS,
-                    30,
+                    16,
                     TimeUnit.MINUTES)
-                    .addTag("periodic_quote_not")
+                    .addTag(WORK_TAG)
                     .setInitialDelay(delayTime, TimeUnit.HOURS)
                     .build()
             println("Delay time: $delayTime")
-            WorkManager.getInstance(context!!).enqueueUniquePeriodicWork("periodic_quote_work", ExistingPeriodicWorkPolicy.REPLACE, task)
+            WorkManager.getInstance(context!!).enqueueUniquePeriodicWork(workName, ExistingPeriodicWorkPolicy.REPLACE, task)
 
         }//for
 
     }//startWork method
 
     private fun cancelWork(){
-        WorkManager.getInstance(context!!).cancelAllWorkByTag("periodic_quote_not") //used one tag for all
+        WorkManager.getInstance(context!!).cancelAllWorkByTag(WORK_TAG) //used one tag for all
     }//cancelWork method
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
