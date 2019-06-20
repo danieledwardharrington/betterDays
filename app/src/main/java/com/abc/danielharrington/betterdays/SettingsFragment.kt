@@ -21,6 +21,7 @@ import java.util.Calendar
 import java.util.Random
 
 import android.content.Context.MODE_PRIVATE
+import android.util.Log
 import com.abc.danielharrington.betterdays.MainActivity.Companion.quotesList
 import com.abc.danielharrington.betterdays.MainActivity.Companion.speakersList
 import com.google.gson.Gson
@@ -31,6 +32,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
     private var themePreference: ListPreference? = null
     private var notificationsPreference: ListPreference? = null
     private var savePreference: Preference? = null
+    private val ALARM_TAG = "Alarm time: " //for seeing the alarm in the logcat
 
     //private var NOTIFICATIONS_PER_DAY: Int = 0
 
@@ -119,6 +121,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
             alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, cal.timeInMillis, AlarmManager.INTERVAL_DAY, pendingIntent)
             println(i)
             i++
+            Log.d(ALARM_TAG, cal.toString())
         }//for
 
     }//setAlarms method
