@@ -107,7 +107,7 @@ class AlertReceiver : BroadcastReceiver() {
                 .setContentIntent(pendingIntent)
                 .build()
 
-        val id = createID()
+        val id = 1
 
         createNotificationChannels()
 
@@ -148,10 +148,4 @@ class AlertReceiver : BroadcastReceiver() {
 
     }//sendOnChannel2 method*/
 
-    //method to generate a unique ID
-    private fun createID(): Int{
-        val now = Date()
-        val id = Integer.parseInt(SimpleDateFormat("ddHHmmss", Locale.US).format(now))
-        return id
-    }//createID method
 }//AlertReceiver class

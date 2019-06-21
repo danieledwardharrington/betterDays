@@ -33,16 +33,15 @@
     </string-array>
 
     <string name="about_string">
-        Thank you for downloading my app. My intention
-        is for this to be a companion to other forms of
-        therapy. Like many people across the world, I\'ve
-        struggled with varying degrees of depression and
-        anxiety and often feel myself getting to my lowest
-        points in the middle of long shifts at work or doing
-        daily tasks. I decided to make this to provide
-        motivational support here and there. Every little bit
-        helps and I hope for others out there like me, this
-        little bit can provide some measure of comfort.\n\n
+        Thank you for downloading my app. My intention is for
+        this to be a small companion to other sorts of therapy,
+        as well as being some practice for me as a new developer.
+        I\'ve struggled with varying levels of mental illness since
+        I was a young child and understand how sometimes you just
+        something small to help get you through your day (or night).
+        As silly as it sounds, sometimes reading some motivational
+        quotes would help pull me out of down periods. My hope is
+        that this app can do that for you.\n\n
         -Daniel
 
     </string>

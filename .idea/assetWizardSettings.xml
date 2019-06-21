@@ -62,7 +62,7 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="scalingPercent" value="71" />
+                                                <entry key="scalingPercent" value="64" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -84,8 +84,9 @@
                                   <option name="values">
                                     <map>
                                       <entry key="backgroundAssetType" value="COLOR" />
-                                      <entry key="foregroundImage" value="C:\Users\Daniel's PC\OneDrive\Resources\appIcon.png" />
-                                      <entry key="previewDensity" value="XXXHIGH" />
+                                      <entry key="backgroundColor" value="f9ffff" />
+                                      <entry key="foregroundImage" value="C:\Users\Daniel's PC\OneDrive\Resources\logoTransparent.png" />
+                                      <entry key="webIconShape" value="CIRCLE" />
                                     </map>
                                   </option>
                                 </PersistentState>

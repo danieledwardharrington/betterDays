@@ -51,19 +51,19 @@ class SettingsFragment : PreferenceFragmentCompat() {
         themePreference!!.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { preference, newValue ->
             THEME_SELECTED = newValue.toString() //setting the selection to the constant for saving
             true
-        }
+        }//themePReference
 
         //handling the notifications preference
         notificationsPreference!!.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { preference, newValue ->
             NOTIFICATIONS_PER_DAY = Integer.parseInt(newValue.toString()) //setting the selection to the constant for saving
             true
-        }
+        }//notificationsPreference
 
         //handling the save
         savePreference!!.onPreferenceClickListener = Preference.OnPreferenceClickListener {
             saveData()
             true
-        }
+        }//savePreference
 
     }//onCreatePreferences
 
@@ -74,7 +74,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
             setAlarms()
         } else {
             clearAlarms() //clearing if the user is removing notifications
-        }
+        }//if/else
 
         val sharedPreferences = activity!!.getSharedPreferences(SHARED_PREFS, MODE_PRIVATE)
         val editor = sharedPreferences.edit()
