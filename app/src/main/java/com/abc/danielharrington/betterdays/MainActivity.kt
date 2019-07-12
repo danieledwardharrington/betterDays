@@ -122,7 +122,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_share -> {
                 val shareIntent = Intent(Intent.ACTION_SEND)
                 shareIntent.type = "text/plain"
-                val shareBody = "Better Days: A Wellness Companion App"
+                val shareBody = "Better Days: A Wellness Companion App\nhttp://bit.ly/betterDaysApp"
                 val shareSubject = "Check out this app!"
                 shareIntent.putExtra(Intent.EXTRA_SUBJECT, shareSubject)
                 shareIntent.putExtra(Intent.EXTRA_TEXT, shareBody)
